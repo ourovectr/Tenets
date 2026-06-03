@@ -1,0 +1,67 @@
+name: Pipeline Reel Engine — Producer
+
+on:
+  schedule:
+    - cron: '22 3 * * *'
+    - cron: '55 9 * * *'
+    - cron: '44 15 * * *'
+    - cron: '17 21 * * *'
+    - cron: '38 0 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: concrete-horizons-producer
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python Libraries
+        run: pip install -r requirements.txt pyyaml
+
+      - name: Step 1 — Scrape Fresh Video
+        run: python scraper.py --config config/producer.yml
+        env:
+          X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
+          X_CT0:        ${{ secrets.X_CT0 }}
+
+      - name: Step 2 — Wash and Upload Reel to Facebook
+        run: python pipeline.py --config config/producer.yml
+        env:
+          FB_PRODUCER_PAGE_ID:    ${{ secrets.FB_PRODUCER_PAGE_ID }}
+          FB_PRODUCER_PAGE_TOKEN: ${{ secrets.FB_PRODUCER_PAGE_TOKEN }}
+          TG_BOT_TOKEN:           ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID:             ${{ secrets.TG_CHAT_ID }}
+          GEMINI_API_KEY:         ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Step 3 — Commit Producer Reel Engine State
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history_producer.txt queue_producer.txt scraper_history_producer.txt assets_producer.json metrics_cache_producer.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "update: sync producer reel pipeline state [skip ci]"
+            git pull origin main --rebase
+            git push origin HEAD:main
+          else
+            echo "No producer reel state changes to commit."
+          fi
