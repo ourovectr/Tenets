@@ -48,6 +48,3 @@ jobs:
           else
             echo "No analytics changes to commit."
           fi
-
-
-
