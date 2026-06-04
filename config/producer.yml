@@ -1,0 +1,73 @@
+# =============================================================================
+# config/producer.yml
+# CONCRETE HORIZONS — PRODUCER PAGE TENANT CONFIG
+# =============================================================================
+
+tenant: producer
+page_name: "Concrete Horizons Producers"
+
+# GitHub Secrets env var names for this page's credentials
+# Add these secrets to your GitHub repo:
+#   FB_PRODUCER_PAGE_ID    — your producer Facebook page ID
+#   FB_PRODUCER_PAGE_TOKEN — your producer page access token
+fb_page_id_env:    "FB_PRODUCER_PAGE_ID"
+fb_page_token_env: "FB_PRODUCER_PAGE_TOKEN"
+
+# ---------------------------------------------------------------------------
+scraper:
+  output_dir:          "downloaded_videos_producer"
+  queue_file:          "queue_producer.txt"
+  history_file:        "scraper_history_producer.txt"
+  daily_limit:         1
+  niche_handles:
+    production:
+      - ILLENIUM
+      - deadmau5
+      - BleepsMachine
+      - FL_Studio
+      - AbletonLive
+      - SpliceHQ
+    beats:
+      - BeatsByDre
+      - OfficialTrackLib
+      - BeatStarsOfficial
+      - ProducerHustle
+      - TheProducerMindset
+    audio_engineering:
+      - iZotopeInc
+      - FabFilterBV
+      - Plugin_Boutique
+      - KVRaudio
+      - MusicRadarNews
+
+# ---------------------------------------------------------------------------
+pipeline:
+  queue_file:          "queue_producer.txt"
+  history_file:        "history_producer.txt"
+  watermark_text:      "CONCRETE HORIZONS"
+  assets_file:         "assets_producer.json"
+  metrics_cache_file:  "metrics_cache_producer.json"
+  page_name:           "Concrete Horizons Producers"
+  caption_style:       "producer"
+
+# ---------------------------------------------------------------------------
+news:
+  history_file:        "news_history_producer.txt"
+  assets_file:         "assets_producer.json"
+  metrics_cache_file:  "metrics_cache_producer.json"
+  page_name:           "Concrete Horizons Producers"
+  caption_style:       "music production, beats, audio engineering, industry news"
+  max_posts_per_run:   1
+  feeds:
+    - "https://www.musicradar.com/feeds/all"
+    - "https://cdm.link/feed/"
+    - "https://www.kvraudio.com/news.php?mode=rss"
+    - "https://www.hypebot.com/feed"
+    - "https://www.musicbusinessworldwide.com/feed/"
+
+# ---------------------------------------------------------------------------
+analytics:
+  history_file:        "analytics_history_producer.csv"
+  assets_file:         "assets_producer.json"
+  metrics_cache_file:  "metrics_cache_producer.json"
+  report_title:        "CONCRETE HORIZONS PRODUCERS ANALYTICS"

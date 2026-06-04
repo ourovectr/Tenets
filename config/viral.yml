@@ -1,0 +1,72 @@
+nano config/producer.ymlx# =============================================================================
+# config/viral.yml
+# CONCRETE HORIZONS — VIRAL PAGE TENANT CONFIG
+# =============================================================================
+
+tenant: viral
+page_name: "Concrete Horizons"
+
+# GitHub Secrets env var names for this page's credentials
+fb_page_id_env:    "FB_PAGE_ID"
+fb_page_token_env: "FB_PAGE_TOKEN"
+
+# ---------------------------------------------------------------------------
+scraper:
+  output_dir:          "downloaded_videos"
+  queue_file:          "queue.txt"
+  history_file:        "scraper_history.txt"
+  daily_limit:         1
+  niche_handles:
+    sports:
+      - HumansNoContext
+      - NextSkills
+      - GymMotivation
+      - TheBest_Viral
+      - YepViralVideos
+      - ViralHog
+    satisfying:
+      - SatisfyingVids
+      - NatureIsLit
+      - OddlySatisfying
+      - CraftyThings
+      - RestorationClips
+    funny:
+      - Fun_Viral_Vids
+      - FunnyByteVids
+      - aww
+      - Pubity
+      - FailArmy
+      - Memezar
+      - CrazyClips
+      - ViralHog2
+
+# ---------------------------------------------------------------------------
+pipeline:
+  queue_file:          "queue.txt"
+  history_file:        "history.txt"
+  watermark_text:      "CONCRETE HORIZONS"
+  assets_file:         "assets.json"
+  metrics_cache_file:  "metrics_cache.json"
+  page_name:           "Concrete Horizons"
+  caption_style:       "viral"
+
+# ---------------------------------------------------------------------------
+news:
+  history_file:        "news_history.txt"
+  assets_file:         "assets.json"
+  metrics_cache_file:  "metrics_cache.json"
+  page_name:           "Concrete Horizons"
+  caption_style:       "global news, objective, informative"
+  max_posts_per_run:   1
+  feeds:
+    - "http://feeds.bbci.co.uk/news/world/rss.xml"
+    - "https://rss.dw.com/xml/rss-dw-top-stories"
+    - "https://www.cbc.ca/cmlink/rss-world"
+    - "http://feeds.abcnews.com/abcnews/usheadlines"
+
+# ---------------------------------------------------------------------------
+analytics:
+  history_file:        "analytics_history.csv"
+  assets_file:         "assets.json"
+  metrics_cache_file:  "metrics_cache.json"
+  report_title:        "CONCRETE HORIZONS ANALYTICS"
