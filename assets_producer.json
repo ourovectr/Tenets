@@ -24,6 +24,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1073526525852961_122103101625348440",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“It took me back to the days of riding my BMX to pick out a VHS”: Meris unveils the Ottobit X, a high-end purveyor of lo-fi guitar sounds inspired by the ‘80s",
+      "url": "https://www.musicradar.com/guitars/meris-ottobit-x-pedal",
+      "created_at": "2026-06-04T15:39:46.672814+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
