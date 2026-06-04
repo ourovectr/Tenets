@@ -1,4 +1,4 @@
-name: News Ingestion Pipeline — Producer
+name: News Ingestion Pipeline - Producer
 
 on:
   schedule:
