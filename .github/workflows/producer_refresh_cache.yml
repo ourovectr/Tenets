@@ -1,49 +1,48 @@
-name: Refresh Cache - Producer
+name: Refresh Cache Producer
 
 on:
-  schedule:
-    - cron: '15 3 * * *'
-  workflow_dispatch:
+  schedule:
+    - cron: '15 3 * * *'
+  workflow_dispatch:
 
 concurrency:
-  group: concrete-horizons-producer
-  cancel-in-progress: false
+  group: concrete-horizons-producer
+  cancel-in-progress: false
 
 jobs:
-  refresh:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-      - name: Set Up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
+      - name: Install Dependencies
+        run: pip install requests pyyaml
 
-      - name: Install Dependencies
-        run: pip install requests pyyaml
+      - name: Run Cache Updater
+        run: python cache_updater.py --config config/producer.yml
+        env:
+          FB_PRODUCER_PAGE_ID: ${{ secrets.FB_PRODUCER_PAGE_ID }}
+          FB_PRODUCER_PAGE_TOKEN: ${{ secrets.FB_PRODUCER_PAGE_TOKEN }}
 
-      - name: Run Cache Updater
-        run: python cache_updater.py --config config/producer.yml
-        env:
-          FB_PRODUCER_PAGE_ID:    ${{ secrets.FB_PRODUCER_PAGE_ID }}
-          FB_PRODUCER_PAGE_TOKEN: ${{ secrets.FB_PRODUCER_PAGE_TOKEN }}
-
-      - name: Commit Updated Producer Cache
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add metrics_cache_producer.json assets_producer.json || true
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: refresh producer metrics cache [skip ci]"
-            git pull origin main --rebase
-            git push origin HEAD:main
-          else
-            echo "No producer cache changes to commit."
-          fi
+      - name: Commit Updated Producer Cache
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics_cache_producer.json assets_producer.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh producer metrics cache [skip ci]"
+            git pull origin main --rebase
+            git push origin HEAD:main
+          else
+            echo "No producer cache changes to commit."
+          fi
