@@ -17,5 +17,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-04T07:09:34.917087+00:00"
+  },
+  "1073526525852961_122102912673348440": {
+    "id": "1073526525852961_122102912673348440",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Fender gives the Tone Master Pro a serious firmware update, adding some bona-fide classics from the Big F amp archive – and some high-gain fire from EVH Gear too",
+      "url": "https://www.musicradar.com/guitars/fender-tone-master-pro-firmware-update-2026",
+      "source": "news_engine",
+      "caption": "Fender gives the Tone Master Pro a serious firmware update, adding some bona-fide classics from the Big F amp archive – and some high-gain fire from EVH Gear too\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-04T10:16:28.789338+00:00"
   }
 }
