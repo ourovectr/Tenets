@@ -38,13 +38,13 @@ jobs:
       - name: Install Python Libraries
         run: pip install -r requirements.txt pyyaml
 
-      - name: Step 1 — Scrape Fresh Video
+      - name: Step 1 - Scrape Fresh Video
         run: python scraper.py --config config/producer.yml
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           X_CT0:        ${{ secrets.X_CT0 }}
 
-      - name: Step 2 — Wash and Upload Reel to Facebook
+      - name: Step 2 - Wash and Upload Reel to Facebook
         run: python pipeline.py --config config/producer.yml
         env:
           FB_PRODUCER_PAGE_ID:    ${{ secrets.FB_PRODUCER_PAGE_ID }}
@@ -53,7 +53,7 @@ jobs:
           TG_CHAT_ID:             ${{ secrets.TG_CHAT_ID }}
           GEMINI_API_KEY:         ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Step 3 — Commit Producer Reel Engine State
+      - name: Step 3 - Commit Producer Reel Engine State
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
