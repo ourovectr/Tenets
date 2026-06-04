@@ -1,4 +1,4 @@
-name: Refresh Cache — Producer
+name: Refresh Cache - Producer
 
 on:
   schedule:
