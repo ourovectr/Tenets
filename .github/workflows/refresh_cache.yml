@@ -1,49 +1,48 @@
-name: Refresh Cache - Viral
+name: Refresh Cache Viral
 
 on:
-  schedule:
-    - cron: '30 4 * * *'
-  workflow_dispatch:
+  schedule:
+    - cron: '30 4 * * *'
+  workflow_dispatch:
 
 concurrency:
-  group: concrete-horizons-viral
-  cancel-in-progress: false
+  group: concrete-horizons-viral
+  cancel-in-progress: false
 
 jobs:
-  refresh:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-      - name: Set Up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
+      - name: Install Dependencies
+        run: pip install requests pyyaml
 
-      - name: Install Dependencies
-        run: pip install requests pyyaml
+      - name: Run Cache Updater
+        run: python cache_updater.py --config config/viral.yml
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
 
-      - name: Run Cache Updater
-        run: python cache_updater.py --config config/viral.yml
-        env:
-          FB_PAGE_ID:    ${{ secrets.FB_PAGE_ID }}
-          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
-
-      - name: Commit Updated Cache
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add metrics_cache.json assets.json || true
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: refresh viral metrics cache [skip ci]"
-            git pull origin main --rebase
-            git push origin HEAD:main
-          else
-            echo "No viral cache changes to commit."
-          fi
+      - name: Commit Updated Cache
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics_cache.json assets.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh viral metrics cache [skip ci]"
+            git pull origin main --rebase
+            git push origin HEAD:main
+          else
+            echo "No viral cache changes to commit."
+          fi
