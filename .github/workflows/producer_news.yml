@@ -1,57 +1,56 @@
-name: News Ingestion Pipeline - Producer
+name: News Ingestion Pipeline Producer
 
 on:
-  schedule:
-    - cron: '29 6 * * *'
-    - cron: '14 12 * * *'
-    - cron: '51 18 * * *'
-    - cron: '33 2 * * *'
-  workflow_dispatch:
+  schedule:
+    - cron: '29 6 * * *'
+    - cron: '14 12 * * *'
+    - cron: '51 18 * * *'
+    - cron: '33 2 * * *'
+  workflow_dispatch:
 
 concurrency:
-  group: concrete-horizons-producer
-  cancel-in-progress: false
+  group: concrete-horizons-producer
+  cancel-in-progress: false
 
 jobs:
-  run-news-engine:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  run-news-engine:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-      - name: Set Up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests google-genai beautifulsoup4 pyyaml
 
-      - name: Install Dependencies
-        run: |
-          pip install --upgrade pip
-          pip install requests google-genai beautifulsoup4 pyyaml
+      - name: Run News Ingestion Engine
+        run: python news_engine.py --config config/producer.yml
+        env:
+          FB_PRODUCER_PAGE_ID: ${{ secrets.FB_PRODUCER_PAGE_ID }}
+          FB_PRODUCER_PAGE_TOKEN: ${{ secrets.FB_PRODUCER_PAGE_TOKEN }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Run News Ingestion Engine
-        run: python news_engine.py --config config/producer.yml
-        env:
-          FB_PRODUCER_PAGE_ID:    ${{ secrets.FB_PRODUCER_PAGE_ID }}
-          FB_PRODUCER_PAGE_TOKEN: ${{ secrets.FB_PRODUCER_PAGE_TOKEN }}
-          TG_BOT_TOKEN:           ${{ secrets.TG_BOT_TOKEN }}
-          TG_CHAT_ID:             ${{ secrets.TG_CHAT_ID }}
-          GEMINI_API_KEY:         ${{ secrets.GEMINI_API_KEY }}
-
-      - name: Commit Producer News State
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news_history_producer.txt assets_producer.json metrics_cache_producer.json || true
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: update producer news pipeline state [skip ci]"
-            git pull origin main --rebase
-            git push origin HEAD:main
-          else
-            echo "No producer news state changes to commit."
-          fi
+      - name: Commit Producer News State
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news_history_producer.txt assets_producer.json metrics_cache_producer.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update producer news pipeline state [skip ci]"
+            git pull origin main --rebase
+            git push origin HEAD:main
+          else
+            echo "No producer news state changes to commit."
+          fi
