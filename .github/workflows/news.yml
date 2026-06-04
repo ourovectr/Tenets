@@ -1,57 +1,56 @@
-name: News Ingestion Pipeline - Viral
+name: News Ingestion Pipeline Viral
 
 on:
-  schedule:
-    - cron: '05 4 * * *'
-    - cron: '38 10 * * *'
-    - cron: '22 16 * * *'
-    - cron: '47 22 * * *'
-  workflow_dispatch:
+  schedule:
+    - cron: '05 4 * * *'
+    - cron: '38 10 * * *'
+    - cron: '22 16 * * *'
+    - cron: '47 22 * * *'
+  workflow_dispatch:
 
 concurrency:
-  group: concrete-horizons-viral
-  cancel-in-progress: false
+  group: concrete-horizons-viral
+  cancel-in-progress: false
 
 jobs:
-  run-news-engine:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  run-news-engine:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-      - name: Set Up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests google-genai beautifulsoup4 pyyaml
 
-      - name: Install Dependencies
-        run: |
-          pip install --upgrade pip
-          pip install requests google-genai beautifulsoup4 pyyaml
+      - name: Run News Ingestion Engine
+        run: python news_engine.py --config config/viral.yml
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Run News Ingestion Engine
-        run: python news_engine.py --config config/viral.yml
-        env:
-          FB_PAGE_ID:     ${{ secrets.FB_PAGE_ID }}
-          FB_PAGE_TOKEN:  ${{ secrets.FB_PAGE_TOKEN }}
-          TG_BOT_TOKEN:   ${{ secrets.TG_BOT_TOKEN }}
-          TG_CHAT_ID:     ${{ secrets.TG_CHAT_ID }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
-      - name: Commit News State
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news_history.txt assets.json metrics_cache.json || true
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: update viral news pipeline state [skip ci]"
-            git pull origin main --rebase
-            git push origin HEAD:main
-          else
-            echo "No viral news state changes to commit."
-          fi
+      - name: Commit News State
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news_history.txt assets.json metrics_cache.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update viral news pipeline state [skip ci]"
+            git pull origin main --rebase
+            git push origin HEAD:main
+          else
+            echo "No viral news state changes to commit."
+          fi
