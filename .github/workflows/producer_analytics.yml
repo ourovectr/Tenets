@@ -1,50 +1,49 @@
-name: Concrete Horizons Analytics - Producer
+name: Concrete Horizons Analytics Producer
 
 on:
-  schedule:
-    - cron: '45 5 * * *'
-    - cron: '45 17 * * *'
-  workflow_dispatch:
+  schedule:
+    - cron: '45 5 * * *'
+    - cron: '45 17 * * *'
+  workflow_dispatch:
 
 concurrency:
-  group: concrete-horizons-producer
-  cancel-in-progress: false
+  group: concrete-horizons-producer
+  cancel-in-progress: false
 
 jobs:
-  analytics:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  analytics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-      - name: Set Up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
+      - name: Install Dependencies
+        run: pip install requests pyyaml
 
-      - name: Install Dependencies
-        run: pip install requests pyyaml
+      - name: Run Analytics
+        run: python analytics.py --config config/producer.yml
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
 
-      - name: Run Analytics
-        run: python analytics.py --config config/producer.yml
-        env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_CHAT_ID:   ${{ secrets.TG_CHAT_ID }}
-
-      - name: Commit Producer Analytics Snapshot
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add analytics_history_producer.csv || true
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: update producer analytics snapshot [skip ci]"
-            git pull origin main --rebase
-            git push origin HEAD:main
-          else
-            echo "No producer analytics changes to commit."
-          fi
+      - name: Commit Producer Analytics Snapshot
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analytics_history_producer.csv || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update producer analytics snapshot [skip ci]"
+            git pull origin main --rebase
+            git push origin HEAD:main
+          else
+            echo "No producer analytics changes to commit."
+          fi
