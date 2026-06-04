@@ -1,4 +1,4 @@
-name: Pipeline Reel Engine — Producer
+name: Pipeline Reel Engine - Producer
 
 on:
   schedule:
