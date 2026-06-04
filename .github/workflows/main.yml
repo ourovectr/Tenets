@@ -1,67 +1,66 @@
-name: Pipeline Reel Engine - Viral
+name: Pipeline Reel Engine Viral
 
 on:
-  schedule:
-    - cron: '17 1 * * *'
-    - cron: '43 7 * * *'
-    - cron: '29 13 * * *'
-    - cron: '51 19 * * *'
-    - cron: '05 23 * * *'
-  workflow_dispatch:
+  schedule:
+    - cron: '17 1 * * *'
+    - cron: '43 7 * * *'
+    - cron: '29 13 * * *'
+    - cron: '51 19 * * *'
+    - cron: '05 23 * * *'
+  workflow_dispatch:
 
 concurrency:
-  group: concrete-horizons-viral
-  cancel-in-progress: false
+  group: concrete-horizons-viral
+  cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-      - name: Set Up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
 
-      - name: Install FFmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
+      - name: Install Python Libraries
+        run: pip install -r requirements.txt pyyaml
 
-      - name: Install Python Libraries
-        run: pip install -r requirements.txt pyyaml
+      - name: Scrape Fresh Video
+        run: python scraper.py --config config/viral.yml
+        env:
+          X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
+          X_CT0: ${{ secrets.X_CT0 }}
 
-      - name: Step 1 - Scrape Fresh Video
-        run: python scraper.py --config config/viral.yml
-        env:
-          X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
-          X_CT0:        ${{ secrets.X_CT0 }}
+      - name: Wash and Upload Reel
+        run: python pipeline.py --config config/viral.yml
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Step 2 - Wash and Upload Reel to Facebook
-        run: python pipeline.py --config config/viral.yml
-        env:
-          FB_PAGE_ID:     ${{ secrets.FB_PAGE_ID }}
-          FB_PAGE_TOKEN:  ${{ secrets.FB_PAGE_TOKEN }}
-          TG_BOT_TOKEN:   ${{ secrets.TG_BOT_TOKEN }}
-          TG_CHAT_ID:     ${{ secrets.TG_CHAT_ID }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
-      - name: Step 3 - Commit Reel Engine State
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add history.txt queue.txt scraper_history.txt assets.json metrics_cache.json || true
-          if ! git diff --cached --quiet; then
-            git commit -m "update: sync viral reel pipeline state [skip ci]"
-            git pull origin main --rebase
-            git push origin HEAD:main
-          else
-            echo "No viral reel state changes to commit."
-          fi
+      - name: Commit Reel Engine State
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history.txt queue.txt scraper_history.txt assets.json metrics_cache.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "update: sync viral reel pipeline state [skip ci]"
+            git pull origin main --rebase
+            git push origin HEAD:main
+          else
+            echo "No viral reel state changes to commit."
+          fi
