@@ -1,4 +1,4 @@
-name: News Ingestion Pipeline — Viral
+name: News Ingestion Pipeline - Viral
 
 on:
   schedule:
