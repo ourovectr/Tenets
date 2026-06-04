@@ -1,4 +1,4 @@
-name: Import Existing Assets — Producer
+name: Import Existing Assets - Producer
 
 on:
   workflow_dispatch:
