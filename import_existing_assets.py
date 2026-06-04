@@ -1,7 +1,4 @@
 
-
-Import_existing_assets.py 
-
 # =============================================================================
 # import_existing_assets.py
 # CONCRETE HORIZONS — MULTI-TENANT HISTORICAL ASSET IMPORTER
