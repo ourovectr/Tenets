@@ -1,4 +1,4 @@
-name: Import Existing Assets — Viral
+name: Import Existing Assets - Viral
 
 on:
   workflow_dispatch:
