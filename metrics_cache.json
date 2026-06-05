@@ -36,5 +36,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-05T21:13:59.579833+00:00"
+  },
+  "1078373508702862_122107025523339459": {
+    "id": "1078373508702862_122107025523339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Ukraine strikes cargo ships and admits Romania drone blast",
+      "url": "https://www.bbc.com/news/articles/c707098wkzpo?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Ukraine strikes cargo ships and admits Romania drone blast\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-05T23:52:05.149273+00:00"
   }
 }
