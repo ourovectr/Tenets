@@ -51,6 +51,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122102921463349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“Ibanez serves up another RG that’s built for stunt guitar, priced for virtuosos-in-training, and with enough sounds to please the fusion kid and headbanger alike”: Ibanez RGR431PB review",
+      "url": "https://www.musicradar.com/guitars/electric-guitars/ibanez-rgr431pb-review",
+      "created_at": "2026-06-05T20:45:26.097406+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }

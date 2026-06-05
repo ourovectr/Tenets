@@ -74,5 +74,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-05T19:37:58.028438+00:00"
+  },
+  "1091929144010861_122102921463349768": {
+    "id": "1091929144010861_122102921463349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“Ibanez serves up another RG that’s built for stunt guitar, priced for virtuosos-in-training, and with enough sounds to please the fusion kid and headbanger alike”: Ibanez RGR431PB review",
+      "url": "https://www.musicradar.com/guitars/electric-guitars/ibanez-rgr431pb-review",
+      "source": "news_engine",
+      "caption": "“Ibanez serves up another RG that’s built for stunt guitar, priced for virtuosos-in-training, and with enough sounds to please the fusion kid and headbanger alike”: Ibanez RGR431PB review\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-05T20:45:26.097914+00:00"
   }
 }
