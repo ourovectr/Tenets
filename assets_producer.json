@@ -13,6 +13,20 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1525856829086431",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Look out for the new exosphere visual in Vegas this weekend, featuring our favorite moments of War!",
+      "url": "https://x.com//status/2055381050948555224",
+      "created_at": "2026-06-05T22:39:46.379803+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2055381050948555224.mp4",
+        "caption": "Look out for the new exosphere visual in Vegas this weekend, featuring our favorite moments of War!\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
