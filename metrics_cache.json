@@ -93,5 +93,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-06T05:08:15.682396+00:00"
+  },
+  "1078373508702862_122107132161339459": {
+    "id": "1078373508702862_122107132161339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "US and Iran exchange strikes in Gulf in latest test of ceasefire",
+      "url": "https://www.bbc.com/news/articles/cvgzgyjk2weo?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "US and Iran exchange strikes in Gulf in latest test of ceasefire\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-06T07:24:37.376756+00:00"
   }
 }
