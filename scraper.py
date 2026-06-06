@@ -66,7 +66,7 @@ ACCOUNT_TO_NICHE = {
 }
 
 OUTPUT_DIR           = scraper_cfg.get("output_dir",   "downloaded_videos")
-DAILY_LIMIT          = scraper_cfg.get("daily_limit",  1)
+DAILY_LIMIT          = scraper_cfg.get("daily_limit",  2)   # 2 videos per run
 QUEUE_FILE           = scraper_cfg.get("queue_file",   "queue.txt")
 SCRAPER_HISTORY_FILE = scraper_cfg.get("history_file", "scraper_history.txt")
 TENANT               = cfg.get("tenant", "viral")
@@ -78,6 +78,7 @@ print(f"[scraper] Output dir   : {OUTPUT_DIR}")
 print(f"[scraper] Queue file   : {QUEUE_FILE}")
 print(f"[scraper] History file : {SCRAPER_HISTORY_FILE}")
 print(f"[scraper] Targets      : {len(TARGET_ACCOUNTS)} accounts")
+print(f"[scraper] Videos/run   : {DAILY_LIMIT}")
 
 
 # ============================================================
@@ -106,21 +107,12 @@ def validate_cookies():
 # 3. TEXT CLEANING UTILITIES
 # ============================================================
 def clean_tweet_text(text):
-    """
-    Strips RT attribution, URLs, and excess whitespace from tweet text.
-    Ensures no Twitter/X source attribution appears in Facebook captions.
-    """
     if not text:
         return ""
-    # Strip RT @username: prefix (retweet attribution)
     text = re.sub(r"^RT @\w+:\s*", "", text.strip())
-    # Strip any remaining @mentions at start
     text = re.sub(r"^@\w+\s*", "", text.strip())
-    # Strip all URLs
     text = re.sub(r"https?://\S+", "", text)
-    # Strip hashtags from tweet text (pipeline adds its own)
     text = re.sub(r"#\w+", "", text)
-    # Collapse whitespace
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
@@ -221,7 +213,6 @@ def extract_video_metadata(entry):
         if not tweet_id:
             return None
 
-        # Safety check: block unsafe / nudity / sexual content
         lowered = text.lower()
         if any(bad_word in lowered for bad_word in NEGATIVE_KEYWORDS):
             print(f"  [SHIELD] Blocked unsafe content in tweet {tweet_id}")
@@ -385,7 +376,6 @@ def download_pipeline_assets(meta, username, history_set):
 
         print(f"  [✓] Saved: {video_filename}")
 
-        # ── Clean tweet text before saving to queue ──────────
         clean_title = clean_tweet_text(meta["text"])
         if not clean_title:
             clean_title = f"{cfg.get('page_name', 'Viral Video')} — Watch Now"
@@ -411,6 +401,7 @@ def download_pipeline_assets(meta, username, history_set):
 def run_pipeline():
     print("=" * 55)
     print(f"  {cfg.get('page_name', 'CONCRETE HORIZONS').upper()} — VIDEO SCRAPER")
+    print(f"  Target: {DAILY_LIMIT} video(s) this run")
     print("=" * 55)
 
     if not validate_cookies():
@@ -442,8 +433,9 @@ def run_pipeline():
                 history_set,
             ):
                 total_downloaded += 1
+                history_set.add(video_meta["id"])
 
-        print(f"\n[✓] Downloaded {total_downloaded} video(s) this cycle.")
+        print(f"\n[✓] Downloaded {total_downloaded}/{DAILY_LIMIT} video(s) this cycle.")
     else:
         print("\n[-] No new eligible videos found across all target accounts.")
 
