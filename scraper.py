@@ -103,7 +103,30 @@ def validate_cookies():
 
 
 # ============================================================
-# 3. CORE PIPELINE OPERATIONS
+# 3. TEXT CLEANING UTILITIES
+# ============================================================
+def clean_tweet_text(text):
+    """
+    Strips RT attribution, URLs, and excess whitespace from tweet text.
+    Ensures no Twitter/X source attribution appears in Facebook captions.
+    """
+    if not text:
+        return ""
+    # Strip RT @username: prefix (retweet attribution)
+    text = re.sub(r"^RT @\w+:\s*", "", text.strip())
+    # Strip any remaining @mentions at start
+    text = re.sub(r"^@\w+\s*", "", text.strip())
+    # Strip all URLs
+    text = re.sub(r"https?://\S+", "", text)
+    # Strip hashtags from tweet text (pipeline adds its own)
+    text = re.sub(r"#\w+", "", text)
+    # Collapse whitespace
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+# ============================================================
+# 4. CORE PIPELINE OPERATIONS
 # ============================================================
 def fetch_timeline(username, cookies):
     url = (
@@ -213,7 +236,7 @@ def extract_video_metadata(entry):
             or []
         )
 
-        video_url      = None
+        video_url       = None
         highest_bitrate = -1
 
         for media in media_list:
@@ -330,18 +353,17 @@ def score_video_candidate(meta):
     ]):
         penalty += 100000
 
-    # Tenant-aware niche boosts
     niche       = meta.get("niche", "general")
     niche_boost = 0
 
     if TENANT == "viral":
-        if niche == "sports":       niche_boost = 1500
-        elif niche == "satisfying": niche_boost = 1200
-        elif niche == "funny":      niche_boost = 1300
+        if niche == "sports":           niche_boost = 1500
+        elif niche == "satisfying":     niche_boost = 1200
+        elif niche == "funny":          niche_boost = 1300
     elif TENANT == "producer":
-        if niche == "production":        niche_boost = 1500
-        elif niche == "beats":           niche_boost = 1400
-        elif niche == "audio_engineering": niche_boost = 1300
+        if niche == "production":           niche_boost = 1500
+        elif niche == "beats":              niche_boost = 1400
+        elif niche == "audio_engineering":  niche_boost = 1300
 
     return view_score + engagement_score + niche_boost - penalty
 
@@ -363,15 +385,17 @@ def download_pipeline_assets(meta, username, history_set):
 
         print(f"  [✓] Saved: {video_filename}")
 
-        clean_text = meta["text"].replace("\n", " ").strip()
-        clean_text = re.sub(r"https?://\S+", "", clean_text).strip()
-        if not clean_text:
-            clean_text = f"{cfg.get('page_name', 'Viral Video')} — Watch Now"
+        # ── Clean tweet text before saving to queue ──────────
+        clean_title = clean_tweet_text(meta["text"])
+        if not clean_title:
+            clean_title = f"{cfg.get('page_name', 'Viral Video')} — Watch Now"
+
+        print(f"  [✓] Queue title cleaned: {clean_title}")
 
         x_link = f"https://x.com/{username}/status/{meta['id']}"
 
         with open(QUEUE_FILE, "a", encoding="utf-8") as q:
-            q.write(f"{x_link}||{clean_text}||{os.path.basename(video_filename)}\n")
+            q.write(f"{x_link}||{clean_title}||{os.path.basename(video_filename)}\n")
 
         append_unique_line(SCRAPER_HISTORY_FILE, meta["id"])
         return True
@@ -382,7 +406,7 @@ def download_pipeline_assets(meta, username, history_set):
 
 
 # ============================================================
-# 4. MAIN RUNNER
+# 5. MAIN RUNNER
 # ============================================================
 def run_pipeline():
     print("=" * 55)
