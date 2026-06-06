@@ -169,5 +169,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-06T06:42:35.875112+00:00"
+  },
+  "1091929144010861_122103255027349768": {
+    "id": "1091929144010861_122103255027349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“She was pissed at me. She said ‘You know what? I’m going to try it because it’s you, but for real this is not going to happen’”: The troubled making of Amy Winehouse's Tears Dry on Their Own",
+      "url": "https://www.musicradar.com/artists/she-was-pissed-at-me-she-said-you-know-what-im-going-to-try-it-because-its-you-but-for-real-this-is-not-going-to-happen-the-troubled-making-of-amy-winehouses-tears-dry-on-their-own",
+      "source": "news_engine",
+      "caption": "“She was pissed at me. She said ‘You know what? I’m going to try it because it’s you, but for real this is not going to happen’”: The troubled making of Amy Winehouse's Tears Dry on Their Own\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-06T09:08:02.437441+00:00"
   }
 }

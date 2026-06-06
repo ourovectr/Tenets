@@ -117,6 +117,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122103255027349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“She was pissed at me. She said ‘You know what? I’m going to try it because it’s you, but for real this is not going to happen’”: The troubled making of Amy Winehouse's Tears Dry on Their Own",
+      "url": "https://www.musicradar.com/artists/she-was-pissed-at-me-she-said-you-know-what-im-going-to-try-it-because-its-you-but-for-real-this-is-not-going-to-happen-the-troubled-making-of-amy-winehouses-tears-dry-on-their-own",
+      "created_at": "2026-06-06T09:08:02.436779+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
