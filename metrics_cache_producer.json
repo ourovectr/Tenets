@@ -264,5 +264,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-06T12:23:20.083080+00:00"
+  },
+  "1091929144010861_122103451023349768": {
+    "id": "1091929144010861_122103451023349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Bad Brains? It's MusicRadar's Quiz of the Week #9!",
+      "url": "https://www.musicradar.com/artists/bands/bad-brains-its-musicradars-quiz-of-the-week-9",
+      "source": "news_engine",
+      "caption": "Bad Brains? It's MusicRadar's Quiz of the Week #9!\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-06T14:06:19.033958+00:00"
   }
 }

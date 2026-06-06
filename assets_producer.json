@@ -183,6 +183,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122103451023349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "Bad Brains? It's MusicRadar's Quiz of the Week #9!",
+      "url": "https://www.musicradar.com/artists/bands/bad-brains-its-musicradars-quiz-of-the-week-9",
+      "created_at": "2026-06-06T14:06:19.033216+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
