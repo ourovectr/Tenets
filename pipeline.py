@@ -78,13 +78,9 @@ print(f"[pipeline] Caption style : {CAPTION_STYLE}")
 
 
 # ============================================================
-# 2. OPENROUTER AI — drop-in Gemini replacement
+# 2. OPENROUTER AI
 # ============================================================
 def generate_text(prompt, max_tokens=300):
-    """
-    Calls OpenRouter with a free model.
-    Returns the text response or empty string on failure.
-    """
     if not OPENROUTER_API_KEY:
         print("[!] OPENROUTER_API_KEY not set.")
         return ""
@@ -92,14 +88,14 @@ def generate_text(prompt, max_tokens=300):
         response = requests.post(
             "https://openrouter.ai/api/v1/chat/completions",
             headers={
-                "Authorization":  f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type":   "application/json",
-                "HTTP-Referer":   "https://github.com/ourovectr/Tenets",
-                "X-Title":        "Concrete Horizons",
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type":  "application/json",
+                "HTTP-Referer":  "https://github.com/ourovectr/Tenets",
+                "X-Title":       "Concrete Horizons",
             },
             json={
-                "model":    "meta-llama/llama-3.1-8b-instruct:free",
-                "messages": [{"role": "user", "content": prompt}],
+                "model":      "meta-llama/llama-3.1-8b-instruct:free",
+                "messages":   [{"role": "user", "content": prompt}],
                 "max_tokens": max_tokens,
             },
             timeout=30,
@@ -115,7 +111,28 @@ def generate_text(prompt, max_tokens=300):
 
 
 # ============================================================
-# 3. TELEGRAM
+# 3. TEXT CLEANING
+# ============================================================
+def clean_source_text(text):
+    """
+    Strips RT attribution, @mentions, URLs and excess whitespace
+    so no Twitter/X source info bleeds into Facebook captions.
+    """
+    if not text:
+        return ""
+    # Strip RT @username: retweet prefix
+    text = re.sub(r"^RT @\w+:\s*", "", text.strip())
+    # Strip leading @mentions
+    text = re.sub(r"^@\w+\s*", "", text.strip())
+    # Strip URLs
+    text = re.sub(r"https?://\S+|www\.\S+", "", text)
+    # Collapse whitespace
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+# ============================================================
+# 4. TELEGRAM
 # ============================================================
 def send_telegram_update(message):
     if not TG_BOT_TOKEN or not TG_CHAT_ID:
@@ -132,7 +149,7 @@ def send_telegram_update(message):
 
 
 # ============================================================
-# 4. RATE LIMIT SAFETY CHECK
+# 5. RATE LIMIT SAFETY CHECK
 # ============================================================
 def verify_api_rate_clearance():
     try:
@@ -176,10 +193,9 @@ def verify_api_rate_clearance():
 
 
 # ============================================================
-# 5. HASHTAG ENGINE — tenant-aware niche sets
+# 6. HASHTAG ENGINE — tenant-aware niche sets
 # ============================================================
 
-# ── Viral hashtag pools ──────────────────────────────────────
 VIRAL_HASHTAGS = {
     "sports": [
         "#sports", "#sportsclips", "#athlete", "#gamehighlights",
@@ -222,7 +238,6 @@ VIRAL_KEYWORDS = {
     ],
 }
 
-# ── Producer hashtag pools ───────────────────────────────────
 PRODUCER_HASHTAGS = {
     "production": [
         "#musicproducer", "#beatmaker", "#flstudio", "#ableton",
@@ -264,7 +279,7 @@ PRODUCER_KEYWORDS = {
 
 
 def infer_niche(source_text):
-    text    = (source_text or "").lower()
+    text     = (source_text or "").lower()
     keywords = PRODUCER_KEYWORDS if TENANT == "producer" else VIRAL_KEYWORDS
     for niche, kws in keywords.items():
         if any(kw in text for kw in kws):
@@ -280,20 +295,21 @@ def build_reel_hashtags(source_text, max_tags=None):
     return " ".join(tags[:target_count])
 
 def build_fallback_caption(raw_source_text):
-    clean_text = (raw_source_text or "Exclusive update").replace("\n", " ").strip()
+    clean = (raw_source_text or "Exclusive update").replace("\n", " ").strip()
     return (
-        f"{clean_text}\n\n"
+        f"{clean}\n\n"
         f"Stay tuned for more.\n\n"
-        f"{build_reel_hashtags(clean_text)}"
+        f"{build_reel_hashtags(clean)}"
     )
 
 
 # ============================================================
-# 6. ENGAGEMENT-BAIT COMMENT BOT
+# 7. ENGAGEMENT-BAIT COMMENT BOT
 # ============================================================
 def deploy_engagement_bait_comment(post_id, post_caption):
     print("[ENGAGEMENT SYSTEM] Preparing automated first comment...")
-    time.sleep(10)
+    print("[WAIT] Pausing 45 seconds for Facebook to process the reel...")
+    time.sleep(45)
 
     try:
         if TENANT == "producer":
@@ -313,11 +329,14 @@ def deploy_engagement_bait_comment(post_id, post_caption):
                 f"Caption: {post_caption}"
             )
 
-        bait_question = generate_text(prompt, max_tokens=50).replace('"', '')
+        print("[ENGAGEMENT] Calling OpenRouter for bait question...")
+        bait_question = generate_text(prompt, max_tokens=50).replace('"', '').strip()
 
         if not bait_question:
-            print("[!] Engagement comment generation returned empty. Skipping.")
+            print("[!] Bait question generation returned empty. Skipping comment.")
             return False
+
+        print(f"[ENGAGEMENT] Bait question generated: {bait_question}")
 
         comment_url = f"https://graph.facebook.com/v22.0/{post_id}/comments"
         payload     = {"message": bait_question, "access_token": FB_PAGE_TOKEN}
@@ -325,6 +344,10 @@ def deploy_engagement_bait_comment(post_id, post_caption):
 
         if "id" in res:
             print(f'[✓] First Comment Deployed: "{bait_question}"')
+            send_telegram_update(
+                f"💬 <b>Bait Comment Posted [{TENANT.upper()}]</b>\n"
+                f"<i>{bait_question}</i>"
+            )
             return True
         else:
             print(f"[-] Engagement comment failed: {res}")
@@ -336,7 +359,7 @@ def deploy_engagement_bait_comment(post_id, post_caption):
 
 
 # ============================================================
-# 7. FFMPEG WATERMARK WASH
+# 8. FFMPEG WATERMARK WASH
 # ============================================================
 def get_fontfile():
     candidates = [
@@ -397,7 +420,7 @@ def execute_laundry_wash(input_path, output_path):
 
 
 # ============================================================
-# 8. QUEUE UTILITIES
+# 9. QUEUE UTILITIES
 # ============================================================
 def get_next_queued_video():
     if not os.path.exists(QUEUE_FILE):
@@ -431,8 +454,8 @@ def get_next_queued_video():
                 if os.path.exists(candidate) and candidate.endswith(".mp4"):
                     return {"filepath": candidate, "title": title, "url": url}
 
-        tweet_id        = url.rstrip("/").split("/")[-1]
-        exact_match     = glob.glob(f"{output_dir}/*_{tweet_id}.mp4")
+        tweet_id         = url.rstrip("/").split("/")[-1]
+        exact_match      = glob.glob(f"{output_dir}/*_{tweet_id}.mp4")
         if exact_match:
             return {"filepath": exact_match[0], "title": title, "url": url}
 
@@ -479,7 +502,7 @@ def pop_completed_queue_item(source_filepath):
 
 
 # ============================================================
-# 9. META PUBLISHING PIPELINE
+# 10. META PUBLISHING PIPELINE
 # ============================================================
 def broadcast_reel_to_meta(video_path, caption_text):
     print("[PIPELINE-META] Initializing upload sequence...")
@@ -558,7 +581,7 @@ def broadcast_reel_to_meta(video_path, caption_text):
 
 
 # ============================================================
-# 10. MAIN
+# 11. MAIN
 # ============================================================
 if __name__ == "__main__":
     print("=" * 55)
@@ -575,13 +598,18 @@ if __name__ == "__main__":
         print(f"[QUEUE] No videos found in {QUEUE_FILE}. Standby mode active.")
         exit()
 
-    source_file      = target_job["filepath"]
-    raw_source_text  = target_job.get("title", "Exclusive Update")
-    raw_source_text  = re.sub(r"https?://\S+|www\.\S+", "", raw_source_text).strip()
+    source_file     = target_job["filepath"]
+    raw_source_text = target_job.get("title", "Exclusive Update")
+
+    # ── Safety net: strip any RT attribution that slipped through ──
+    raw_source_text = clean_source_text(raw_source_text)
+    if not raw_source_text:
+        raw_source_text = "Exclusive Update"
 
     processed_output_file = f"washed_factory_output_{TENANT}.mp4"
 
     print(f"[ACTIVE JOB] Processing: {source_file}")
+    print(f"[ACTIVE JOB] Source text: {raw_source_text}")
 
     laundry_success = execute_laundry_wash(source_file, processed_output_file)
 
