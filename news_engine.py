@@ -16,11 +16,11 @@
 #   Pass --config config/producer.yml in the producer news workflow
 #
 # SECRETS REQUIRED (viral):
-#   FB_PAGE_ID, FB_PAGE_TOKEN, TG_BOT_TOKEN, TG_CHAT_ID, GEMINI_API_KEY
+#   FB_PAGE_ID, FB_PAGE_TOKEN, TG_BOT_TOKEN, TG_CHAT_ID, OPENROUTER_API_KEY
 #
 # SECRETS REQUIRED (producer):
 #   FB_PRODUCER_PAGE_ID, FB_PRODUCER_PAGE_TOKEN,
-#   TG_BOT_TOKEN, TG_CHAT_ID, GEMINI_API_KEY
+#   TG_BOT_TOKEN, TG_CHAT_ID, OPENROUTER_API_KEY
 # =============================================================================
 
 import argparse
@@ -32,7 +32,6 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 import requests
-import google.genai as genai
 from bs4 import BeautifulSoup
 
 from config_loader import load_config, get_news_config
@@ -58,13 +57,12 @@ news_cfg  = get_news_config(cfg)
 # ============================================================
 # 1. CONFIGURATION — loaded from tenant config + env vars
 # ============================================================
-FB_PAGE_TOKEN  = os.getenv(cfg.get("fb_page_token_env", "FB_PAGE_TOKEN"), "")
-TG_BOT_TOKEN   = os.getenv("TG_BOT_TOKEN",  "")
-TG_CHAT_ID     = os.getenv("TG_CHAT_ID",    "")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-client         = genai.Client(api_key=GEMINI_API_KEY)
+FB_PAGE_TOKEN      = os.getenv(cfg.get("fb_page_token_env", "FB_PAGE_TOKEN"), "")
+TG_BOT_TOKEN       = os.getenv("TG_BOT_TOKEN",       "")
+TG_CHAT_ID         = os.getenv("TG_CHAT_ID",         "")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 
-FB_PAGE_ID     = meta_shared.FB_PAGE_ID
+FB_PAGE_ID = meta_shared.FB_PAGE_ID
 
 NEWS_HISTORY_FILE  = news_cfg.get("history_file",       "news_history.txt")
 PAGE_NAME          = news_cfg.get("page_name",           cfg.get("page_name", "Concrete Horizons"))
@@ -81,7 +79,44 @@ print(f"[news_engine] Feeds loaded  : {len(FEEDS)}")
 
 
 # ============================================================
-# 2. TELEGRAM
+# 2. OPENROUTER AI — drop-in Gemini replacement
+# ============================================================
+def generate_text(prompt, max_tokens=400):
+    """
+    Calls OpenRouter with a free model.
+    Returns the text response or empty string on failure.
+    """
+    if not OPENROUTER_API_KEY:
+        print("[!] OPENROUTER_API_KEY not set.")
+        return ""
+    try:
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type":  "application/json",
+                "HTTP-Referer":  "https://github.com/ourovectr/Tenets",
+                "X-Title":       "Concrete Horizons",
+            },
+            json={
+                "model":      "meta-llama/llama-3.1-8b-instruct:free",
+                "messages":   [{"role": "user", "content": prompt}],
+                "max_tokens": max_tokens,
+            },
+            timeout=30,
+        )
+        data = response.json()
+        if "choices" in data:
+            return data["choices"][0]["message"]["content"].strip()
+        print(f"[!] OpenRouter unexpected response: {data}")
+        return ""
+    except Exception as e:
+        print(f"[-] OpenRouter error: {e}")
+        return ""
+
+
+# ============================================================
+# 3. TELEGRAM
 # ============================================================
 def send_telegram_update(message):
     if not TG_BOT_TOKEN or not TG_CHAT_ID:
@@ -98,7 +133,7 @@ def send_telegram_update(message):
 
 
 # ============================================================
-# 3. HISTORY
+# 4. HISTORY
 # ============================================================
 def load_history():
     if not os.path.exists(NEWS_HISTORY_FILE):
@@ -112,12 +147,12 @@ def save_to_history(url_hash):
 
 
 # ============================================================
-# 4. RSS FEED READER
+# 5. RSS FEED READER
 # ============================================================
 def fetch_global_news(feed_url):
     try:
-        request_headers  = {"User-Agent": "Mozilla/5.0"}
-        network_request  = urllib.request.Request(feed_url, headers=request_headers)
+        request_headers = {"User-Agent": "Mozilla/5.0"}
+        network_request = urllib.request.Request(feed_url, headers=request_headers)
 
         with urllib.request.urlopen(network_request, timeout=20) as network_response:
             xml_payload = network_response.read()
@@ -130,9 +165,9 @@ def fetch_global_news(feed_url):
             link  = article_node.find("link")
             desc  = article_node.find("description")
 
-            title = title.text if title is not None else ""
-            link  = link.text  if link  is not None else ""
-            rss_description = desc.text if desc is not None else ""
+            title           = title.text if title is not None else ""
+            link            = link.text  if link  is not None else ""
+            rss_description = desc.text  if desc  is not None else ""
 
             image_url = ""
             enclosure = article_node.find("enclosure")
@@ -162,7 +197,7 @@ def fetch_global_news(feed_url):
 
 
 # ============================================================
-# 5. FULL STORY EXTRACTION
+# 6. FULL STORY EXTRACTION
 # ============================================================
 def clean_text(text):
     return re.sub(r"\s+", " ", text or "").strip()
@@ -203,13 +238,9 @@ def fetch_full_story_text(article_url, rss_description=""):
 
         paragraph_candidates = []
         selectors = [
-            "article p",
-            "main p",
-            "[role='main'] p",
-            "div[itemprop='articleBody'] p",
-            "section p",
-            "div[class*='article'] p",
-            "div[class*='story'] p",
+            "article p", "main p", "[role='main'] p",
+            "div[itemprop='articleBody'] p", "section p",
+            "div[class*='article'] p", "div[class*='story'] p",
             "div[class*='content'] p",
         ]
 
@@ -250,7 +281,7 @@ def fetch_full_story_text(article_url, rss_description=""):
 
 
 # ============================================================
-# 6. HIGH-RES IMAGE SCRAPER
+# 7. HIGH-RES IMAGE SCRAPER
 # ============================================================
 def get_high_res_image(article_url, fallback_image):
     print(f"  [+] Scraping {article_url} for HD Open Graph image...")
@@ -281,14 +312,9 @@ def get_high_res_image(article_url, fallback_image):
 
 
 # ============================================================
-# 7. AI TEXT WASH — tenant-aware prompt
+# 8. AI TEXT WASH — tenant-aware prompt
 # ============================================================
 def build_ai_prompt(title, story_block):
-    """
-    Returns a Gemini prompt tuned to the active tenant's voice and audience.
-    Viral page: broad, objective, global-news tone.
-    Producer page: music industry, speaks directly to producers and engineers.
-    """
     if TENANT == "producer":
         return (
             f"You are writing for a Facebook page called '{PAGE_NAME}' "
@@ -324,29 +350,16 @@ def wash_and_post_to_meta(title, url, image_url, story_text=""):
     if not story_block:
         story_block = "No article body was available. Use the headline only."
 
-    prompt        = build_ai_prompt(title, story_block)
-    washed_caption = ""
-
-    for attempt in range(2):
-        try:
-            response       = client.models.generate_content(
-                model="gemini-2.0-flash",
-                contents=prompt,
-            )
-            washed_caption = response.text.strip()
-            break
-        except Exception as ai_error:
-            if ("429" in str(ai_error) or "RESOURCE_EXHAUSTED" in str(ai_error)) and attempt == 0:
-                print("[!] Gemini rate limit hit. Waiting 65 seconds before retry...")
-                time.sleep(65)
-                continue
-            print(f"[-] AI Processing Error: {ai_error}")
-            break
+    prompt         = build_ai_prompt(title, story_block)
+    washed_caption = generate_text(prompt, max_tokens=400)
 
     if not washed_caption:
-        print("[!] AI generation failed completely. Using raw title fallback.")
-        tenant_tag = "#musicproducer #beatmaker #producerlife" if TENANT == "producer" \
-                     else "#news #concretehorizons #worldnews"
+        print("[!] AI generation failed. Using raw title fallback.")
+        tenant_tag = (
+            "#musicproducer #beatmaker #producerlife"
+            if TENANT == "producer"
+            else "#news #concretehorizons #worldnews"
+        )
         washed_caption = f"{title}\n\n{tenant_tag}"
 
     # ── Post to Facebook ─────────────────────────────────────
@@ -427,7 +440,7 @@ def wash_and_post_to_meta(title, url, image_url, story_text=""):
 
 
 # ============================================================
-# 8. DEDUPLICATION LOOP
+# 9. DEDUPLICATION LOOP
 # ============================================================
 def pipeline_deduplication_sync(articles, max_posts_per_run=1):
     history_set    = load_history()
@@ -470,7 +483,7 @@ def pipeline_deduplication_sync(articles, max_posts_per_run=1):
 
 
 # ============================================================
-# 9. MAIN ENGINE LOOP
+# 10. MAIN ENGINE LOOP
 # ============================================================
 if __name__ == "__main__":
     print("=" * 55)
