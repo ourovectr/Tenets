@@ -143,6 +143,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122103373143349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“I always tried to push him to be better, and he’s always been my incentive for trying to be better – better than him, sometimes”: Paul Stanley on the synergy and the rivalry that drove Kiss",
+      "url": "https://www.musicradar.com/artists/i-always-tried-to-push-him-to-be-better-and-hes-always-been-my-incentive-for-trying-to-be-better-better-than-him-sometimes-paul-stanley-on-the-synergy-and-the-rivalry-that-drove-kiss",
+      "created_at": "2026-06-06T12:16:13.734753+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }

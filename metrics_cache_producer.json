@@ -207,5 +207,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-06T11:17:03.016757+00:00"
+  },
+  "1091929144010861_122103373143349768": {
+    "id": "1091929144010861_122103373143349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“I always tried to push him to be better, and he’s always been my incentive for trying to be better – better than him, sometimes”: Paul Stanley on the synergy and the rivalry that drove Kiss",
+      "url": "https://www.musicradar.com/artists/i-always-tried-to-push-him-to-be-better-and-hes-always-been-my-incentive-for-trying-to-be-better-better-than-him-sometimes-paul-stanley-on-the-synergy-and-the-rivalry-that-drove-kiss",
+      "source": "news_engine",
+      "caption": "“I always tried to push him to be better, and he’s always been my incentive for trying to be better – better than him, sometimes”: Paul Stanley on the synergy and the rivalry that drove Kiss\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-06T12:16:13.735401+00:00"
   }
 }
