@@ -27,6 +27,20 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "983767207895687",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "ODYSSEY RETURNS TO SPHERE JULY 3 &amp; 4!! See ya in Vegas baby ❤️",
+      "url": "https://x.com//status/2054971004355838166",
+      "created_at": "2026-06-06T04:42:01.148892+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2054971004355838166.mp4",
+        "caption": "ODYSSEY RETURNS TO SPHERE JULY 3 &amp; 4!! See ya in Vegas baby ❤️\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
