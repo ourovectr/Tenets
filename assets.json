@@ -125,6 +125,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "2174705616641552",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "That’s an alligator",
+      "url": "https://x.com//status/2063343328473796944",
+      "created_at": "2026-06-06T20:48:37.536351+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2063343328473796944.mp4",
+        "caption": "That’s an alligator\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "1450585459946160",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "He is probably blind",
+      "url": "https://x.com//status/2063318605886804231",
+      "created_at": "2026-06-06T20:51:29.846733+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2063318605886804231.mp4",
+        "caption": "He is probably blind\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
