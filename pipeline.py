@@ -2,8 +2,9 @@
 # pipeline.py
 # CONCRETE HORIZONS — MULTI-TENANT REEL PROCESSOR & UPLOADER
 # =============================================================================
-# Reads the next queued video, runs FFmpeg wash, generates an AI caption,
-# uploads to the correct Facebook page, and posts an engagement-bait comment.
+# Reads queued videos, runs FFmpeg wash, generates AI captions via OpenRouter,
+# uploads to the correct Facebook page, and posts engagement-bait comments.
+# Processes REELS_PER_RUN items per execution (default: 2).
 # All page credentials, file paths, watermark text, and caption style are
 # loaded from the tenant YAML config.
 #
@@ -68,6 +69,8 @@ WATERMARK_TEXT  = pipeline_cfg.get("watermark_text",  "CONCRETE HORIZONS")
 PAGE_NAME       = pipeline_cfg.get("page_name",       cfg.get("page_name", "Concrete Horizons"))
 CAPTION_STYLE   = pipeline_cfg.get("caption_style",   "viral")
 TENANT          = cfg.get("tenant", "viral")
+REELS_PER_RUN   = pipeline_cfg.get("reels_per_run",   2)   # upload 2 reels per run
+INTER_REEL_GAP  = pipeline_cfg.get("inter_reel_gap",  90)  # seconds between uploads
 
 print(f"[pipeline] Tenant        : {TENANT}")
 print(f"[pipeline] Page name     : {PAGE_NAME}")
@@ -75,6 +78,7 @@ print(f"[pipeline] Queue file    : {QUEUE_FILE}")
 print(f"[pipeline] History file  : {HISTORY_FILE}")
 print(f"[pipeline] Watermark     : {WATERMARK_TEXT}")
 print(f"[pipeline] Caption style : {CAPTION_STYLE}")
+print(f"[pipeline] Reels per run : {REELS_PER_RUN}")
 
 
 # ============================================================
@@ -114,19 +118,11 @@ def generate_text(prompt, max_tokens=300):
 # 3. TEXT CLEANING
 # ============================================================
 def clean_source_text(text):
-    """
-    Strips RT attribution, @mentions, URLs and excess whitespace
-    so no Twitter/X source info bleeds into Facebook captions.
-    """
     if not text:
         return ""
-    # Strip RT @username: retweet prefix
     text = re.sub(r"^RT @\w+:\s*", "", text.strip())
-    # Strip leading @mentions
     text = re.sub(r"^@\w+\s*", "", text.strip())
-    # Strip URLs
     text = re.sub(r"https?://\S+|www\.\S+", "", text)
-    # Collapse whitespace
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
@@ -581,32 +577,31 @@ def broadcast_reel_to_meta(video_path, caption_text):
 
 
 # ============================================================
-# 11. MAIN
+# 11. SINGLE REEL PROCESSOR
 # ============================================================
-if __name__ == "__main__":
-    print("=" * 55)
-    print(f"  {PAGE_NAME.upper()} — REELS ENGINE v2")
-    print("=" * 55)
-
-    if not verify_api_rate_clearance():
-        print("[HALT] Load threshold exceeded or auth error. Terminating safely.")
-        exit()
+def process_one_reel(slot_number):
+    """
+    Processes and uploads one reel from the queue.
+    Returns True if successful, False otherwise.
+    """
+    print(f"\n{'=' * 55}")
+    print(f"  REEL SLOT {slot_number} OF {REELS_PER_RUN}")
+    print(f"{'=' * 55}")
 
     target_job = get_next_queued_video()
 
     if not target_job:
-        print(f"[QUEUE] No videos found in {QUEUE_FILE}. Standby mode active.")
-        exit()
+        print(f"[QUEUE] No videos in queue for slot {slot_number}. Skipping.")
+        return False
 
     source_file     = target_job["filepath"]
     raw_source_text = target_job.get("title", "Exclusive Update")
 
-    # ── Safety net: strip any RT attribution that slipped through ──
     raw_source_text = clean_source_text(raw_source_text)
     if not raw_source_text:
         raw_source_text = "Exclusive Update"
 
-    processed_output_file = f"washed_factory_output_{TENANT}.mp4"
+    processed_output_file = f"washed_factory_output_{TENANT}_{slot_number}.mp4"
 
     print(f"[ACTIVE JOB] Processing: {source_file}")
     print(f"[ACTIVE JOB] Source text: {raw_source_text}")
@@ -614,12 +609,12 @@ if __name__ == "__main__":
     laundry_success = execute_laundry_wash(source_file, processed_output_file)
 
     if not laundry_success:
-        print("[-] Aborting — video render failed.")
+        print(f"[-] Slot {slot_number} — FFmpeg failed. Aborting this slot.")
         send_telegram_update(
-            f"🛑 <b>Laundry Failed [{TENANT}]:</b> FFmpeg could not process: "
-            f"<code>{source_file}</code>"
+            f"🛑 <b>Laundry Failed [{TENANT}] Slot {slot_number}:</b> "
+            f"FFmpeg could not process: <code>{source_file}</code>"
         )
-        exit()
+        return False
 
     print("[AI] Generating caption with OpenRouter...")
     if TENANT == "producer":
@@ -651,73 +646,121 @@ if __name__ == "__main__":
     caption_body   = re.sub(r"(?:#\w+\s*)+$", "", final_caption.strip()).strip()
     final_caption  = f"{caption_body}\n\n{reel_hashtags}"
 
-    if os.path.exists(processed_output_file):
-        broadcast_result = broadcast_reel_to_meta(processed_output_file, final_caption)
+    if not os.path.exists(processed_output_file):
+        print(f"[-] Critical: Washed output file missing for slot {slot_number}.")
+        send_telegram_update(
+            f"🛑 <b>Critical Output Error [{TENANT}] Slot {slot_number}:</b> "
+            f"Washed file not found at broadcast time."
+        )
+        return False
 
-        if broadcast_result:
-            register_asset(
-                "reels",
-                broadcast_result,
-                source="pipeline",
-                title=target_job.get("title", ""),
-                url=target_job.get("url", ""),
-                extra={
-                    "queue_source": source_file,
-                    "caption":      final_caption,
-                    "status":       "published",
-                    "tenant":       TENANT,
-                },
+    broadcast_result = broadcast_reel_to_meta(processed_output_file, final_caption)
+
+    if broadcast_result:
+        register_asset(
+            "reels",
+            broadcast_result,
+            source="pipeline",
+            title=target_job.get("title", ""),
+            url=target_job.get("url", ""),
+            extra={
+                "queue_source": source_file,
+                "caption":      final_caption,
+                "status":       "published",
+                "tenant":       TENANT,
+            },
+        )
+
+        set_cached_metrics(
+            broadcast_result,
+            kind="reel",
+            metrics={
+                "reactions":   0,
+                "comments":    0,
+                "shares":      0,
+                "views":       None,
+                "engagements": 0,
+            },
+            metadata={
+                "title":   target_job.get("title", ""),
+                "url":     target_job.get("url",   ""),
+                "source":  "pipeline",
+                "caption": final_caption,
+                "tenant":  TENANT,
+            },
+        )
+
+        print("[INFO] Cleaning up queue...")
+        pop_completed_queue_item(source_file)
+
+        try:
+            video_id_for_history = (
+                target_job["url"].rstrip("/").split("/")[-1]
+                if "/" in target_job["url"] else target_job["url"]
             )
+            with open(HISTORY_FILE, "a", encoding="utf-8") as history:
+                history.write(f"{video_id_for_history}\n")
+            print(f"[✓] History updated: {video_id_for_history}")
+        except Exception as e:
+            print(f"[-] History write failed: {e}")
 
-            set_cached_metrics(
-                broadcast_result,
-                kind="reel",
-                metrics={
-                    "reactions":   0,
-                    "comments":    0,
-                    "shares":      0,
-                    "views":       None,
-                    "engagements": 0,
-                },
-                metadata={
-                    "title":   target_job.get("title", ""),
-                    "url":     target_job.get("url",   ""),
-                    "source":  "pipeline",
-                    "caption": final_caption,
-                    "tenant":  TENANT,
-                },
-            )
-
-            print("[INFO] Cleaning up queue...")
-            pop_completed_queue_item(source_file)
-
-            try:
-                video_id_for_history = (
-                    target_job["url"].rstrip("/").split("/")[-1]
-                    if "/" in target_job["url"] else target_job["url"]
-                )
-                with open(HISTORY_FILE, "a", encoding="utf-8") as history:
-                    history.write(f"{video_id_for_history}\n")
-                print(f"[✓] History updated: {video_id_for_history}")
-            except Exception as e:
-                print(f"[-] History write failed: {e}")
-
-        else:
-            print("[!] Broadcast failed. Queue item retained for next run.")
-            send_telegram_update(
-                f"⚠️ <b>Job Uncompleted [{TENANT}]:</b> File failed to post. "
-                f"Kept in queue for next cycle."
-            )
-
-        if os.path.exists(processed_output_file):
-            os.remove(processed_output_file)
-            print("[CLEANUP] Purged temporary washed file.")
+        success = True
 
     else:
-        print("[-] Critical: Washed output file missing at broadcast time.")
+        print(f"[!] Slot {slot_number} broadcast failed. Queue item retained for next run.")
         send_telegram_update(
-            f"🛑 <b>Critical Output Error [{TENANT}]:</b> Washed file not found when "
-            f"broadcaster tried to post."
+            f"⚠️ <b>Job Uncompleted [{TENANT}] Slot {slot_number}:</b> "
+            f"File failed to post. Kept in queue for next cycle."
         )
+        success = False
+
+    if os.path.exists(processed_output_file):
+        os.remove(processed_output_file)
+        print(f"[CLEANUP] Purged temporary washed file for slot {slot_number}.")
+
+    return success
+
+
+# ============================================================
+# 12. MAIN — loop through REELS_PER_RUN slots
+# ============================================================
+if __name__ == "__main__":
+    print("=" * 55)
+    print(f"  {PAGE_NAME.upper()} — REELS ENGINE v2")
+    print(f"  Uploading {REELS_PER_RUN} reel(s) this run")
+    print("=" * 55)
+
+    if not verify_api_rate_clearance():
+        print("[HALT] Load threshold exceeded or auth error. Terminating safely.")
+        exit()
+
+    total_success = 0
+    total_failed  = 0
+
+    for slot in range(1, REELS_PER_RUN + 1):
+        result = process_one_reel(slot)
+
+        if result:
+            total_success += 1
+        else:
+            total_failed += 1
+
+        # Gap between reels — avoids hitting FB rate limits
+        # Skip gap after the last slot
+        if slot < REELS_PER_RUN:
+            print(f"\n[GAP] Waiting {INTER_REEL_GAP}s before next reel upload...")
+            time.sleep(INTER_REEL_GAP)
+
+    print(f"\n{'=' * 55}")
+    print(f"  RUN COMPLETE [{TENANT.upper()}]")
+    print(f"  Uploaded : {total_success}/{REELS_PER_RUN}")
+    print(f"  Failed   : {total_failed}/{REELS_PER_RUN}")
+    print(f"{'=' * 55}")
+
+    send_telegram_update(
+        f"📊 <b>Run Summary [{TENANT.upper()}]</b>\n"
+        f"✅ Uploaded: {total_success}/{REELS_PER_RUN}\n"
+        f"❌ Failed: {total_failed}/{REELS_PER_RUN}"
+    )
 
     print("\n--- Pipeline Cycle Terminated Cleanly ---")
