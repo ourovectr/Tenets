@@ -321,5 +321,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-06T16:51:52.849132+00:00"
+  },
+  "1091929144010861_122103647367349768": {
+    "id": "1091929144010861_122103647367349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "MusicRadar deals of the week: We've found $200 off both a Gretsch and a Yamaha drum kit, hundreds off acoustic guitars, jaw-dropping plugin deals, and tasty recording gear bargains",
+      "url": "https://www.musicradar.com/music-tech/musicradar-deals-of-the-week-weve-found-usd200-off-both-a-gretsch-and-a-yamaha-drum-kit-hundreds-off-acoustic-guitars-jaw-dropping-plugin-deals-and-tasty-recording-gear-bargains",
+      "source": "news_engine",
+      "caption": "MusicRadar deals of the week: We've found $200 off both a Gretsch and a Yamaha drum kit, hundreds off acoustic guitars, jaw-dropping plugin deals, and tasty recording gear bargains\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-06T20:01:35.940113+00:00"
   }
 }
