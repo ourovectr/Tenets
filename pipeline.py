@@ -16,11 +16,11 @@
 #   Pass --config config/producer.yml in the producer reel workflow
 #
 # SECRETS REQUIRED (viral):
-#   FB_PAGE_ID, FB_PAGE_TOKEN, TG_BOT_TOKEN, TG_CHAT_ID, GEMINI_API_KEY
+#   FB_PAGE_ID, FB_PAGE_TOKEN, TG_BOT_TOKEN, TG_CHAT_ID, OPENROUTER_API_KEY
 #
 # SECRETS REQUIRED (producer):
 #   FB_PRODUCER_PAGE_ID, FB_PRODUCER_PAGE_TOKEN,
-#   TG_BOT_TOKEN, TG_CHAT_ID, GEMINI_API_KEY
+#   TG_BOT_TOKEN, TG_CHAT_ID, OPENROUTER_API_KEY
 # =============================================================================
 
 import argparse
@@ -32,8 +32,6 @@ import random
 import requests
 import subprocess
 import time
-
-import google.genai as genai
 
 from config_loader import load_config, get_pipeline_config
 import meta_shared
@@ -57,11 +55,10 @@ pipeline_cfg = get_pipeline_config(cfg)
 # ============================================================
 # 1. CONFIGURATION — loaded from tenant config + env vars
 # ============================================================
-FB_PAGE_TOKEN  = os.getenv(cfg.get("fb_page_token_env", "FB_PAGE_TOKEN"), "")
-TG_BOT_TOKEN   = os.getenv("TG_BOT_TOKEN",  "")
-TG_CHAT_ID     = os.getenv("TG_CHAT_ID",    "")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-client         = genai.Client(api_key=GEMINI_API_KEY)
+FB_PAGE_TOKEN      = os.getenv(cfg.get("fb_page_token_env", "FB_PAGE_TOKEN"), "")
+TG_BOT_TOKEN       = os.getenv("TG_BOT_TOKEN",       "")
+TG_CHAT_ID         = os.getenv("TG_CHAT_ID",         "")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 
 FB_PAGE_ID     = meta_shared.FB_PAGE_ID
 
@@ -81,7 +78,44 @@ print(f"[pipeline] Caption style : {CAPTION_STYLE}")
 
 
 # ============================================================
-# 2. TELEGRAM
+# 2. OPENROUTER AI — drop-in Gemini replacement
+# ============================================================
+def generate_text(prompt, max_tokens=300):
+    """
+    Calls OpenRouter with a free model.
+    Returns the text response or empty string on failure.
+    """
+    if not OPENROUTER_API_KEY:
+        print("[!] OPENROUTER_API_KEY not set.")
+        return ""
+    try:
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization":  f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type":   "application/json",
+                "HTTP-Referer":   "https://github.com/ourovectr/Tenets",
+                "X-Title":        "Concrete Horizons",
+            },
+            json={
+                "model":    "meta-llama/llama-3.1-8b-instruct:free",
+                "messages": [{"role": "user", "content": prompt}],
+                "max_tokens": max_tokens,
+            },
+            timeout=30,
+        )
+        data = response.json()
+        if "choices" in data:
+            return data["choices"][0]["message"]["content"].strip()
+        print(f"[!] OpenRouter unexpected response: {data}")
+        return ""
+    except Exception as e:
+        print(f"[-] OpenRouter error: {e}")
+        return ""
+
+
+# ============================================================
+# 3. TELEGRAM
 # ============================================================
 def send_telegram_update(message):
     if not TG_BOT_TOKEN or not TG_CHAT_ID:
@@ -98,7 +132,7 @@ def send_telegram_update(message):
 
 
 # ============================================================
-# 3. RATE LIMIT SAFETY CHECK
+# 4. RATE LIMIT SAFETY CHECK
 # ============================================================
 def verify_api_rate_clearance():
     try:
@@ -121,12 +155,12 @@ def verify_api_rate_clearance():
             or response.headers.get("x-app-usage")
         )
         if usage_header:
-            usage_json    = json.loads(usage_header)
+            usage_json     = json.loads(usage_header)
             call_count_pct = usage_json.get("call_count", 0)
             total_pct = max(
                 call_count_pct,
                 usage_json.get("total_cputime", 0),
-                usage_json.get("total_time", 0),
+                usage_json.get("total_time",    0),
             )
             print(f"[MONITOR] Meta Engine Load [{TENANT}]: {total_pct}%")
             if total_pct > 85:
@@ -142,7 +176,7 @@ def verify_api_rate_clearance():
 
 
 # ============================================================
-# 4. HASHTAG ENGINE — tenant-aware niche sets
+# 5. HASHTAG ENGINE — tenant-aware niche sets
 # ============================================================
 
 # ── Viral hashtag pools ──────────────────────────────────────
@@ -230,8 +264,7 @@ PRODUCER_KEYWORDS = {
 
 
 def infer_niche(source_text):
-    text = (source_text or "").lower()
-
+    text    = (source_text or "").lower()
     keywords = PRODUCER_KEYWORDS if TENANT == "producer" else VIRAL_KEYWORDS
     for niche, kws in keywords.items():
         if any(kw in text for kw in kws):
@@ -242,7 +275,6 @@ def build_reel_hashtags(source_text, max_tags=None):
     niche      = infer_niche(source_text)
     tag_pool   = PRODUCER_HASHTAGS if TENANT == "producer" else VIRAL_HASHTAGS
     count_pool = PRODUCER_HASHTAG_COUNTS if TENANT == "producer" else VIRAL_HASHTAG_COUNTS
-
     tags         = list(tag_pool.get(niche, tag_pool["general"]))
     target_count = max_tags if max_tags is not None else count_pool.get(niche, 8)
     return " ".join(tags[:target_count])
@@ -257,12 +289,11 @@ def build_fallback_caption(raw_source_text):
 
 
 # ============================================================
-# 5. ENGAGEMENT-BAIT COMMENT BOT
+# 6. ENGAGEMENT-BAIT COMMENT BOT
 # ============================================================
 def deploy_engagement_bait_comment(post_id, post_caption):
     print("[ENGAGEMENT SYSTEM] Preparing automated first comment...")
-    print("[WAIT] Pausing 65 seconds to allow Gemini quota refresh...")
-    time.sleep(65)
+    time.sleep(10)
 
     try:
         if TENANT == "producer":
@@ -282,8 +313,11 @@ def deploy_engagement_bait_comment(post_id, post_caption):
                 f"Caption: {post_caption}"
             )
 
-        response      = client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
-        bait_question = response.text.strip().replace('"', '')
+        bait_question = generate_text(prompt, max_tokens=50).replace('"', '')
+
+        if not bait_question:
+            print("[!] Engagement comment generation returned empty. Skipping.")
+            return False
 
         comment_url = f"https://graph.facebook.com/v22.0/{post_id}/comments"
         payload     = {"message": bait_question, "access_token": FB_PAGE_TOKEN}
@@ -297,12 +331,12 @@ def deploy_engagement_bait_comment(post_id, post_caption):
             return False
 
     except Exception as e:
-        print(f"[-] Engagement bot error (likely Gemini quota): {e}")
+        print(f"[-] Engagement bot error: {e}")
         return False
 
 
 # ============================================================
-# 6. FFMPEG WATERMARK WASH
+# 7. FFMPEG WATERMARK WASH
 # ============================================================
 def get_fontfile():
     candidates = [
@@ -318,10 +352,10 @@ def get_fontfile():
 def execute_laundry_wash(input_path, output_path):
     print(f"[LAUNDRY] Processing: {input_path}")
 
-    speed_factor    = round(random.uniform(0.97, 1.03), 2)
-    audio_pts       = round(1.0 / speed_factor, 2)
-    watermark_text  = WATERMARK_TEXT
-    fontfile        = get_fontfile()
+    speed_factor   = round(random.uniform(0.97, 1.03), 2)
+    audio_pts      = round(1.0 / speed_factor, 2)
+    watermark_text = WATERMARK_TEXT
+    fontfile       = get_fontfile()
 
     drawtext_base = (
         f"drawtext=text='{watermark_text}':fontcolor=white@0.4:fontsize=42:"
@@ -363,7 +397,7 @@ def execute_laundry_wash(input_path, output_path):
 
 
 # ============================================================
-# 7. QUEUE UTILITIES
+# 8. QUEUE UTILITIES
 # ============================================================
 def get_next_queued_video():
     if not os.path.exists(QUEUE_FILE):
@@ -376,8 +410,8 @@ def get_next_queued_video():
         if not lines:
             return None
 
-        first_line = lines[0]
-        parts      = first_line.split("||")
+        first_line    = lines[0]
+        parts         = first_line.split("||")
         url           = parts[0].strip() if len(parts) > 0 else "UNKNOWN_URL"
         title         = parts[1].strip() if len(parts) > 1 else "Exclusive Update"
         filename_hint = parts[2].strip() if len(parts) > 2 else ""
@@ -397,8 +431,8 @@ def get_next_queued_video():
                 if os.path.exists(candidate) and candidate.endswith(".mp4"):
                     return {"filepath": candidate, "title": title, "url": url}
 
-        tweet_id    = url.rstrip("/").split("/")[-1]
-        exact_match = glob.glob(f"{output_dir}/*_{tweet_id}.mp4")
+        tweet_id        = url.rstrip("/").split("/")[-1]
+        exact_match     = glob.glob(f"{output_dir}/*_{tweet_id}.mp4")
         if exact_match:
             return {"filepath": exact_match[0], "title": title, "url": url}
 
@@ -445,7 +479,7 @@ def pop_completed_queue_item(source_filepath):
 
 
 # ============================================================
-# 8. META PUBLISHING PIPELINE
+# 9. META PUBLISHING PIPELINE
 # ============================================================
 def broadcast_reel_to_meta(video_path, caption_text):
     print("[PIPELINE-META] Initializing upload sequence...")
@@ -524,7 +558,7 @@ def broadcast_reel_to_meta(video_path, caption_text):
 
 
 # ============================================================
-# 9. MAIN
+# 10. MAIN
 # ============================================================
 if __name__ == "__main__":
     print("=" * 55)
@@ -559,30 +593,29 @@ if __name__ == "__main__":
         )
         exit()
 
-    print("[AI] Generating caption with Gemini...")
-    try:
-        if TENANT == "producer":
-            prompt = (
-                f"Rewrite this title into a high-retention engaging Facebook Reel description "
-                f"for a music production page called '{PAGE_NAME}': '{raw_source_text}'. "
-                f"Keep it under 2 sentences. Speak directly to producers, beatmakers, "
-                f"and audio engineers. Write like an expert in the craft. "
-                f"Do NOT include any hashtags or URLs."
-            )
-        else:
-            prompt = (
-                f"Rewrite this title into a high-retention, engaging Facebook Reel description: "
-                f"'{raw_source_text}'. "
-                f"Keep it under 2 sentences. Maximize curiosity. Write like an expert "
-                f"commentator. Do NOT include any hashtags or URLs."
-            )
+    print("[AI] Generating caption with OpenRouter...")
+    if TENANT == "producer":
+        prompt = (
+            f"Rewrite this title into a high-retention engaging Facebook Reel description "
+            f"for a music production page called '{PAGE_NAME}': '{raw_source_text}'. "
+            f"Keep it under 2 sentences. Speak directly to producers, beatmakers, "
+            f"and audio engineers. Write like an expert in the craft. "
+            f"Do NOT include any hashtags or URLs."
+        )
+    else:
+        prompt = (
+            f"Rewrite this title into a high-retention, engaging Facebook Reel description: "
+            f"'{raw_source_text}'. "
+            f"Keep it under 2 sentences. Maximize curiosity. Write like an expert "
+            f"commentator. Do NOT include any hashtags or URLs."
+        )
 
-        response     = client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
-        final_caption = response.text.strip()
+    final_caption = generate_text(prompt, max_tokens=150)
+
+    if final_caption:
         print("[✓] AI caption generated.")
-    except Exception as e:
-        print(f"[!] Gemini error (likely quota): {e}")
-        print("[→] Using fallback caption.")
+    else:
+        print("[!] AI generation failed. Using fallback caption.")
         final_caption = build_fallback_caption(raw_source_text)
 
     hashtag_source = f"{raw_source_text} {final_caption}"
@@ -612,10 +645,10 @@ if __name__ == "__main__":
                 broadcast_result,
                 kind="reel",
                 metrics={
-                    "reactions":  0,
-                    "comments":   0,
-                    "shares":     0,
-                    "views":      None,
+                    "reactions":   0,
+                    "comments":    0,
+                    "shares":      0,
+                    "views":       None,
                     "engagements": 0,
                 },
                 metadata={
