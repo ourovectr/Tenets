@@ -31,7 +31,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install --upgrade pip
-          pip install requests google-genai beautifulsoup4 pyyaml
+          pip install requests beautifulsoup4 pyyaml
 
       - name: Run News Ingestion Engine
         run: python news_engine.py --config config/producer.yml
@@ -40,7 +40,7 @@ jobs:
           FB_PRODUCER_PAGE_TOKEN: ${{ secrets.FB_PRODUCER_PAGE_TOKEN }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Commit Producer News State
         run: |
