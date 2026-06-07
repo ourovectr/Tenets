@@ -69,8 +69,8 @@ WATERMARK_TEXT  = pipeline_cfg.get("watermark_text",  "CONCRETE HORIZONS")
 PAGE_NAME       = pipeline_cfg.get("page_name",       cfg.get("page_name", "Concrete Horizons"))
 CAPTION_STYLE   = pipeline_cfg.get("caption_style",   "viral")
 TENANT          = cfg.get("tenant", "viral")
-REELS_PER_RUN   = pipeline_cfg.get("reels_per_run",   2)   # upload 2 reels per run
-INTER_REEL_GAP  = pipeline_cfg.get("inter_reel_gap",  90)  # seconds between uploads
+REELS_PER_RUN   = pipeline_cfg.get("reels_per_run",   2)
+INTER_REEL_GAP  = pipeline_cfg.get("inter_reel_gap",  90)
 
 print(f"[pipeline] Tenant        : {TENANT}")
 print(f"[pipeline] Page name     : {PAGE_NAME}")
@@ -579,7 +579,7 @@ def broadcast_reel_to_meta(video_path, caption_text):
 # ============================================================
 # 11. SINGLE REEL PROCESSOR
 # ============================================================
-def process_one_reel(slot_number):
+def process_one_reel(slot_number, target_job):
     """
     Processes and uploads one reel from the queue.
     Returns True if successful, False otherwise.
@@ -587,12 +587,6 @@ def process_one_reel(slot_number):
     print(f"\n{'=' * 55}")
     print(f"  REEL SLOT {slot_number} OF {REELS_PER_RUN}")
     print(f"{'=' * 55}")
-
-    target_job = get_next_queued_video()
-
-    if not target_job:
-        print(f"[QUEUE] No videos in queue for slot {slot_number}. Skipping.")
-        return False
 
     source_file     = target_job["filepath"]
     raw_source_text = target_job.get("title", "Exclusive Update")
@@ -727,7 +721,7 @@ def process_one_reel(slot_number):
 if __name__ == "__main__":
     print("=" * 55)
     print(f"  {PAGE_NAME.upper()} — REELS ENGINE v2")
-    print(f"  Uploading {REELS_PER_RUN} reel(s) this run")
+    print(f"  Uploading up to {REELS_PER_RUN} reel(s) this run")
     print("=" * 55)
 
     if not verify_api_rate_clearance():
@@ -738,29 +732,47 @@ if __name__ == "__main__":
     total_failed  = 0
 
     for slot in range(1, REELS_PER_RUN + 1):
-        result = process_one_reel(slot)
+
+        # Check queue before doing anything for this slot
+        target_job = get_next_queued_video()
+
+        if not target_job:
+            print(f"[QUEUE] Slot {slot} — nothing in queue. Stopping cleanly.")
+            break
+
+        result = process_one_reel(slot, target_job)
 
         if result:
             total_success += 1
         else:
             total_failed += 1
 
-        # Gap between reels — avoids hitting FB rate limits
-        # Skip gap after the last slot
+        # Gap between reels — skip after last slot
         if slot < REELS_PER_RUN:
-            print(f"\n[GAP] Waiting {INTER_REEL_GAP}s before next reel upload...")
-            time.sleep(INTER_REEL_GAP)
+            next_job = get_next_queued_video()
+            if next_job:
+                print(f"\n[GAP] Waiting {INTER_REEL_GAP}s before next reel upload...")
+                time.sleep(INTER_REEL_GAP)
 
+    # ── Summary ──────────────────────────────────────────────
     print(f"\n{'=' * 55}")
     print(f"  RUN COMPLETE [{TENANT.upper()}]")
-    print(f"  Uploaded : {total_success}/{REELS_PER_RUN}")
-    print(f"  Failed   : {total_failed}/{REELS_PER_RUN}")
+    print(f"  Uploaded : {total_success}")
+    print(f"  Failed   : {total_failed}")
     print(f"{'=' * 55}")
 
-    send_telegram_update(
-        f"📊 <b>Run Summary [{TENANT.upper()}]</b>\n"
-        f"✅ Uploaded: {total_success}/{REELS_PER_RUN}\n"
-        f"❌ Failed: {total_failed}/{REELS_PER_RUN}"
-    )
+    if total_failed > 0:
+        # Real upload failure — alert
+        send_telegram_update(
+            f"⚠️ <b>Upload Issue [{TENANT.upper()}]</b>\n"
+            f"✅ Uploaded: {total_success}\n"
+            f"❌ Failed: {total_failed}"
+        )
+    elif total_success > 0:
+        # Clean run — already notified per reel, no extra message needed
+        print(f"[INFO] {total_success} reel(s) deployed cleanly.")
+    else:
+        # Empty queue — complete silence, no Telegram
+        print("[INFO] Queue was empty. Nothing to upload this run.")
 
     print("\n--- Pipeline Cycle Terminated Cleanly ---")
