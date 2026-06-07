@@ -153,6 +153,34 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "873024499169390",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "thx for 2025 horde; that was so awesome!! 2026?! lets gooooo!! :D",
+      "url": "https://x.com//status/2006072576850944333",
+      "created_at": "2026-06-07T05:13:08.948530+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2006072576850944333.mp4",
+        "caption": "thx for 2025 horde; that was so awesome!! 2026?! lets gooooo!! :D\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
+    },
+    {
+      "id": "1508143770951547",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "toronto horde &lt;3",
+      "url": "https://x.com//status/2005672306342027672",
+      "created_at": "2026-06-07T05:14:45.150807+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2005672306342027672.mp4",
+        "caption": "toronto horde &lt;3\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
