@@ -435,5 +435,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-07T20:55:40.545093+00:00"
+  },
+  "1078373508702862_122107725075339459": {
+    "id": "1078373508702862_122107725075339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Friendship or leverage: Why is Xi Jinping going to North Korea?",
+      "url": "https://www.bbc.com/news/articles/cdep497r256o?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Friendship or leverage: Why is Xi Jinping going to North Korea?\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-07T23:44:17.580867+00:00"
   }
 }
