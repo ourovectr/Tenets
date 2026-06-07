@@ -209,6 +209,34 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "939302762490384",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "DEDZII X-1-25-25-1-25-X",
+      "url": "https://x.com//status/1883469588731687175",
+      "created_at": "2026-06-07T11:42:08.301939+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_1883469588731687175.mp4",
+        "caption": "DEDZII X-1-25-25-1-25-X\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
+    },
+    {
+      "id": "1440722407861018",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Watch as American producer @itsedisoncole walks us through the creative process behind his recently released FLAMES EP, and listen on your preferred streaming platform here: @heybitethis",
+      "url": "https://x.com//status/1828861524019998744",
+      "created_at": "2026-06-07T11:44:10.788453+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_1828861524019998744.mp4",
+        "caption": "Watch as American producer @itsedisoncole walks us through the creative process behind his recently released FLAMES EP, and listen on your preferred streaming platform here: @heybitethis\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
