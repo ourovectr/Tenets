@@ -606,5 +606,43 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-07T20:03:21.343904+00:00"
+  },
+  "1029071106475588": {
+    "id": "1029071106475588",
+    "kind": "reel",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "They have been like this all morning… 😅 We don’t blame them! The Beats Solo 4 - JENNIE Special Edition is available now. Shop the newest collaboration at and select retail partners.",
+      "url": "https://x.com//status/2048069681245036865",
+      "source": "pipeline",
+      "caption": "They have been like this all morning… 😅 We don’t blame them! The Beats Solo 4 - JENNIE Special Edition is available now. Shop the newest collaboration at and select retail partners.\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-07T22:33:26.095173+00:00"
+  },
+  "1528450572654480": {
+    "id": "1528450572654480",
+    "kind": "reel",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Did it again. The Beats Solo 4 - JENNIE Special Edition is back, now in Onyx Black 🖤. Our latest collaboration drops on April 24th at and select retail partners.",
+      "url": "https://x.com//status/2046591465401585996",
+      "source": "pipeline",
+      "caption": "Did it again. The Beats Solo 4 - JENNIE Special Edition is back, now in Onyx Black 🖤. Our latest collaboration drops on April 24th at and select retail partners.\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-07T22:34:52.208174+00:00"
   }
 }
