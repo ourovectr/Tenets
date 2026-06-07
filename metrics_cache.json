@@ -378,5 +378,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-07T15:12:29.744080+00:00"
+  },
+  "1078373508702862_122107651305339459": {
+    "id": "1078373508702862_122107651305339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Israel strikes Beirut suburb days after US-brokered truce",
+      "url": "https://www.bbc.com/news/articles/c0qyevk8139o?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Israel strikes Beirut suburb days after US-brokered truce\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-07T17:44:04.547404+00:00"
   }
 }
