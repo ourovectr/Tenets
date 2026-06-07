@@ -181,6 +181,34 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "27335425852815054",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "horde! the @mau5hop holiday sale kicks off tomorrow! 30% off* for Nov 28th ONLY :P *some product exclusions apply",
+      "url": "https://x.com//status/1994071935030800523",
+      "created_at": "2026-06-07T07:17:20.631997+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_1994071935030800523.mp4",
+        "caption": "horde! the @mau5hop holiday sale kicks off tomorrow! 30% off* for Nov 28th ONLY :P *some product exclusions apply\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
+    },
+    {
+      "id": "1304486338013232",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "vegas horde @neoncityfestlv &lt;3",
+      "url": "https://x.com//status/1993324539141332994",
+      "created_at": "2026-06-07T07:18:50.360074+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_1993324539141332994.mp4",
+        "caption": "vegas horde @neoncityfestlv &lt;3\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
