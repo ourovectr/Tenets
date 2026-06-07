@@ -331,6 +331,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122104049553349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“You created the Toy Story musical world, and we are lucky to get to live in it”: Taylor Swift thanks “the incomparable” Randy Newman as she releases her own Toy Story song, I Knew It, I Knew You",
+      "url": "https://www.musicradar.com/artists/you-created-the-toy-story-musical-world-and-we-are-lucky-to-get-to-live-in-it-taylor-swift-thanks-the-incomparable-randy-newman-as-she-releases-her-own-toy-story-song-i-knew-it-i-knew-you",
+      "created_at": "2026-06-07T09:45:00.099013+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
