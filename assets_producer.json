@@ -411,6 +411,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122104380141349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“I can visualise sitting at the lovely black Steinway piano. I was playing on it one day, and this song came to me”: How Paul McCartney created his greatest post-Beatles song",
+      "url": "https://www.musicradar.com/artists/i-can-visualise-sitting-at-the-lovely-black-steinway-piano-i-was-playing-on-it-one-day-and-this-song-came-to-me-how-paul-mccartney-created-his-greatest-post-beatles-song",
+      "created_at": "2026-06-07T20:03:21.342745+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
