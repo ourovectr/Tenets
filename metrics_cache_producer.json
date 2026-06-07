@@ -530,5 +530,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-07T11:44:10.789549+00:00"
+  },
+  "1091929144010861_122104213323349768": {
+    "id": "1091929144010861_122104213323349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“We’re playing Led Zeppelin songs, and Eddie would imitate Jimmy Page… I mean, he had it down!”: Steve Farris on the time he jammed ZZ Top and Led Zeppelin songs with Eddie Van Halen",
+      "url": "https://www.musicradar.com/artists/steve-farris-on-jamming-led-zeppelin-and-zz-top-songs-with-eddie-van-halen",
+      "source": "news_engine",
+      "caption": "“We’re playing Led Zeppelin songs, and Eddie would imitate Jimmy Page… I mean, he had it down!”: Steve Farris on the time he jammed ZZ Top and Led Zeppelin songs with Eddie Van Halen\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-07T14:18:31.157949+00:00"
   }
 }

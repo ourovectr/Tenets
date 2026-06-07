@@ -371,6 +371,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122104213323349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“We’re playing Led Zeppelin songs, and Eddie would imitate Jimmy Page… I mean, he had it down!”: Steve Farris on the time he jammed ZZ Top and Led Zeppelin songs with Eddie Van Halen",
+      "url": "https://www.musicradar.com/artists/steve-farris-on-jamming-led-zeppelin-and-zz-top-songs-with-eddie-van-halen",
+      "created_at": "2026-06-07T14:18:31.156839+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
