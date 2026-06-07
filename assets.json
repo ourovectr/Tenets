@@ -153,6 +153,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "2397700283974002",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "He borrowed the willpower of every man on Earth for that moment",
+      "url": "https://x.com//status/2063373787073016235",
+      "created_at": "2026-06-07T00:13:21.875172+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2063373787073016235.mp4",
+        "caption": "He borrowed the willpower of every man on Earth for that moment\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "1481954367003358",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Casillas vs Buffon, Euro 2008. 😍🇪🇸🇮🇹",
+      "url": "https://x.com//status/2063370340818944025",
+      "created_at": "2026-06-07T00:16:49.083633+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2063370340818944025.mp4",
+        "caption": "Casillas vs Buffon, Euro 2008. 😍🇪🇸🇮🇹\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
