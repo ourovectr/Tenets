@@ -291,6 +291,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122103952119349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "\"Where it truly triumphs is in its versatility and value proposition\": Fender Strobo-Sonic Pro Tuner Pedal review",
+      "url": "https://www.musicradar.com/guitars/guitar-pedals/fender-strobo-sonic-pro-tuner-pedal-review",
+      "created_at": "2026-06-07T06:49:06.220372+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
