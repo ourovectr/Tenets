@@ -335,6 +335,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1309664791342151",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "The day Sergio Agüero received a kiss from a rival player’s son 🥹",
+      "url": "https://x.com//status/2063674206382858408",
+      "created_at": "2026-06-08T16:57:56.207655+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064012502065713382.mp4",
+        "caption": "The day Sergio Agüero received a kiss from a rival player’s son 🥹\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "2284659818952228",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "These are the people who survive horror movies",
+      "url": "https://x.com//status/2063943495161688568",
+      "created_at": "2026-06-08T16:59:16.763266+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064008056216711525.mp4",
+        "caption": "These are the people who survive horror movies\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
