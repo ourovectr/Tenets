@@ -519,6 +519,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122104851243349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“I told my label I was going to make a rock album – as in an album made of rocks”: Laura Misch is turning the natural world into music with field recordings, saxophone and experimental electronics",
+      "url": "https://www.musicradar.com/artists/i-told-my-label-i-was-going-to-make-a-rock-album-as-in-an-album-made-of-rocks-laura-misch-is-turning-the-natural-world-into-music-with-field-recordings-saxophone-and-experimental-electronics",
+      "created_at": "2026-06-08T11:24:31.546190+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
