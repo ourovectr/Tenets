@@ -321,6 +321,34 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "3972605586374762",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "The only thing we're guilty of is having suspiciously great battery life to power your new year workouts and more 🔋.",
+      "url": "https://x.com//status/2014744947753140532",
+      "created_at": "2026-06-08T08:27:44.304915+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2014744947753140532.mp4",
+        "caption": "The only thing we're guilty of is having suspiciously great battery life to power your new year workouts and more 🔋.\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
+    },
+    {
+      "id": "2103801437687062",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Put in the work. Staying strong this year with Kirsty Godso, whose training philosophy is all about showing up, staying consistent, and moving with purpose.",
+      "url": "https://x.com//status/2013657775952269364",
+      "created_at": "2026-06-08T08:29:10.989945+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2013657775952269364.mp4",
+        "caption": "Put in the work. Staying strong this year with Kirsty Godso, whose training philosophy is all about showing up, staying consistent, and moving with purpose.\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
