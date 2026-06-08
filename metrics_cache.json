@@ -701,5 +701,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-08T21:32:17.665406+00:00"
+  },
+  "1078373508702862_122108033661339459": {
+    "id": "1078373508702862_122108033661339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Watch: Trump tells BBC Netanyahu did not defy him",
+      "url": "https://www.bbc.com/news/videos/cd958e7j8q9o?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Watch: Trump tells BBC Netanyahu did not defy him\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-08T23:50:27.661301+00:00"
   }
 }
