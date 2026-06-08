@@ -377,6 +377,20 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1492316715148745",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Back to back champion. 4-time MVP. Shohei Ohtani is larger than life. 歴史に残る2連覇。4度目のMVP。大谷翔平、想像を超えたその先へ。",
+      "url": "https://x.com//status/2011559075176431625",
+      "created_at": "2026-06-08T18:15:18.356864+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2011559075176431625.mp4",
+        "caption": "Back to back champion. 4-time MVP. Shohei Ohtani is larger than life. 歴史に残る2連覇。4度目のMVP。大谷翔平、想像を超えたその先へ。\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
