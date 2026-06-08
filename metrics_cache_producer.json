@@ -796,5 +796,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-08T13:59:23.322933+00:00"
+  },
+  "1091929144010861_122104997733349768": {
+    "id": "1091929144010861_122104997733349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“She’s the best engineer I’ve ever worked with, period. I’ve made all my albums with Laura pretty much since I started”: Jack Antonoff on the “genius” engineer behind Taylor Swift's biggest albums",
+      "url": "https://www.musicradar.com/music-tech/shes-the-best-engineer-ive-ever-worked-with-period-ive-made-all-my-albums-with-laura-pretty-much-since-i-started-jack-antonoff-on-the-genius-engineer-behind-taylor-swifts-biggest-albums",
+      "source": "news_engine",
+      "caption": "“She’s the best engineer I’ve ever worked with, period. I’ve made all my albums with Laura pretty much since I started”: Jack Antonoff on the “genius” engineer behind Taylor Swift's biggest albums\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-08T16:16:43.507643+00:00"
   }
 }
