@@ -279,6 +279,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1562307082082103",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "He’s using all his body weight 😭",
+      "url": "https://x.com//status/2063685305186627745",
+      "created_at": "2026-06-08T06:08:23.269606+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2063744145005412689.mp4",
+        "caption": "He’s using all his body weight 😭\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "1362828562614601",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "I love whatever is wrong with him",
+      "url": "https://x.com//status/2063764969221431586",
+      "created_at": "2026-06-08T06:09:35.231474+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2063674206382858408.mp4",
+        "caption": "I love whatever is wrong with him\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
