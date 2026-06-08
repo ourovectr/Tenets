@@ -381,6 +381,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122107836879339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "Rare footage captured of Great White shark in Mediterranean Sea",
+      "url": "https://www.bbc.com/news/videos/cd6p6zqzj6do?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-08T09:01:52.771553+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }
