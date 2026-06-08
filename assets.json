@@ -461,6 +461,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122107958913339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "Iran and Israel say they have halted strikes after first exchange of fire since truce",
+      "url": "https://www.bbc.com/news/articles/cj6ge150z5go?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-08T18:40:08.763260+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }
