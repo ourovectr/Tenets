@@ -479,6 +479,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122104660281349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“It’s boring to know what you’re doing in the studio – once you know what you’re doing, the magic leaves”: Jack Antonoff on why music production \"expertise\" is overrated",
+      "url": "https://www.musicradar.com/music-tech/its-boring-to-know-what-youre-doing-in-the-studio-once-you-know-what-youre-doing-the-magic-leaves-jack-antonoff-on-why-music-production-expertise-is-overrated",
+      "created_at": "2026-06-08T07:14:51.201217+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
