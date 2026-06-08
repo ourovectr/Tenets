@@ -293,6 +293,34 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1041930254977286",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "She’s back… 🖤",
+      "url": "https://x.com//status/2045140229544092023",
+      "created_at": "2026-06-08T05:17:54.742097+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2045140229544092023.mp4",
+        "caption": "She’s back… 🖤\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
+    },
+    {
+      "id": "975520761998987",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "TWO ICONS JOIN FORCES. The special-edition Nike Powerbeats Pro 2 launches March 20th at 9am PST at and select Apple stores globally.",
+      "url": "https://x.com//status/2034661181529763877",
+      "created_at": "2026-06-08T05:19:05.704487+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2034661181529763877.mp4",
+        "caption": "TWO ICONS JOIN FORCES. The special-edition Nike Powerbeats Pro 2 launches March 20th at 9am PST at and select Apple stores globally.\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
