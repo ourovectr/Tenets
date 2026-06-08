@@ -349,6 +349,34 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "2231447307707255",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "From Oshu to Los Angeles. 海の向こうから、この街へ。",
+      "url": "https://x.com//status/2012283723387900016",
+      "created_at": "2026-06-08T13:58:20.211216+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2012283723387900016.mp4",
+        "caption": "From Oshu to Los Angeles. 海の向こうから、この街へ。\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
+    },
+    {
+      "id": "1686258925757685",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "The biggest Sho on Earth 💫 この地球で、最高のショータイム。",
+      "url": "https://x.com//status/2011921338978746764",
+      "created_at": "2026-06-08T13:59:23.321517+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos_producer/_2011921338978746764.mp4",
+        "caption": "The biggest Sho on Earth 💫 この地球で、最高のショータイム。\n\nStay tuned for more.\n\n#beats #beatsforsale #hiphop #trap #lofi #instrumental #beatmaker #producer #newbeat #reels",
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ],
   "news": [
