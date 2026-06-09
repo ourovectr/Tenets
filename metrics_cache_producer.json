@@ -1433,5 +1433,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-09T07:01:15.964663+00:00"
+  },
+  "1091929144010861_122105555613349768": {
+    "id": "1091929144010861_122105555613349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“The union passed a motion to ban the use of synths, drum machines and any electronic devices”: the day the 'Loony' Musician's Union tried to kill the synthesizer (which also happened to be Bob Moog’s birthday)",
+      "url": "https://www.musicradar.com/music-industry/the-union-passed-a-motion-to-ban-the-use-of-synths-drum-machines-and-any-electronic-devices-the-day-the-loony-musicians-union-tried-to-kill-the-synthesizer-on-bob-moogs-birthday",
+      "source": "news_engine",
+      "caption": "“The union passed a motion to ban the use of synths, drum machines and any electronic devices”: the day the 'Loony' Musician's Union tried to kill the synthesizer (which also happened to be Bob Moog’s birthday)\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-09T10:07:56.752418+00:00"
   }
 }
