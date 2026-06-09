@@ -1471,5 +1471,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-09T15:25:54.215611+00:00"
+  },
+  "1091929144010861_122105893953349768": {
+    "id": "1091929144010861_122105893953349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“It quickly became one of our more popular models, but we have regularly heard players request one change”: Do not adjust your set – Gibson just unveiled a doublecut shred machine with a Floyd Rose",
+      "url": "https://www.musicradar.com/guitars/gibson-victory-floyd-rose-tremolo",
+      "source": "news_engine",
+      "caption": "“It quickly became one of our more popular models, but we have regularly heard players request one change”: Do not adjust your set – Gibson just unveiled a doublecut shred machine with a Floyd Rose\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-09T20:51:52.198522+00:00"
   }
 }
