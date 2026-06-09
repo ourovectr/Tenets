@@ -1596,5 +1596,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-09T21:28:23.671624+00:00"
+  },
+  "1078373508702862_122108407251339459": {
+    "id": "1078373508702862_122108407251339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Inside Myanmar, rebels are losing ground as military forces men into army",
+      "url": "https://www.bbc.com/news/articles/c20y6966xqzo?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Inside Myanmar, rebels are losing ground as military forces men into army\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-09T23:58:49.690642+00:00"
   }
 }
