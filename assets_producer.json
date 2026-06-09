@@ -853,6 +853,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122105439801349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“They were so similar and they were like, ‘You should change it, Whitney Houston has this other song’”: Jennifer Lopez says that she was advised to change one of the songs on her debut album because it sounded too similar to a Whitney Houston hit",
+      "url": "https://www.musicradar.com/artists/they-were-so-similar-and-they-were-like-you-should-change-it-whitney-houston-has-this-other-song-jennifer-lopez-says-that-she-was-advised-to-change-one-of-the-songs-on-her-debut-album-because-it-sounded-too-similar-to-a-whitney-houston-hit",
+      "created_at": "2026-06-09T06:33:38.608999+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }

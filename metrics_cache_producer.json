@@ -1397,5 +1397,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-08T21:09:34.401654+00:00"
+  },
+  "1091929144010861_122105439801349768": {
+    "id": "1091929144010861_122105439801349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“They were so similar and they were like, ‘You should change it, Whitney Houston has this other song’”: Jennifer Lopez says that she was advised to change one of the songs on her debut album because it sounded too similar to a Whitney Houston hit",
+      "url": "https://www.musicradar.com/artists/they-were-so-similar-and-they-were-like-you-should-change-it-whitney-houston-has-this-other-song-jennifer-lopez-says-that-she-was-advised-to-change-one-of-the-songs-on-her-debut-album-because-it-sounded-too-similar-to-a-whitney-houston-hit",
+      "source": "news_engine",
+      "caption": "“They were so similar and they were like, ‘You should change it, Whitney Houston has this other song’”: Jennifer Lopez says that she was advised to change one of the songs on her debut album because it sounded too similar to a Whitney Houston hit\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-09T06:33:38.610255+00:00"
   }
 }
