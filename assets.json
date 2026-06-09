@@ -475,6 +475,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1048510700840274",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "The day Sergio Agüero received a kiss from a rival player’s son 🥹",
+      "url": "https://x.com//status/2064142122916163955",
+      "created_at": "2026-06-09T16:20:01.297613+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064271995047391397.mp4",
+        "caption": "The day Sergio Agüero received a kiss from a rival player’s son 🥹\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "28169680965953350",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "She only stopped because she wanted to eat",
+      "url": "https://x.com//status/2064279962081743298",
+      "created_at": "2026-06-09T16:21:18.725872+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064380069309497655.mp4",
+        "caption": "She only stopped because she wanted to eat\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
