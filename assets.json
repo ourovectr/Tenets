@@ -569,6 +569,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122108176113339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "ICC suspends top prosecutor after investigating misconduct allegations",
+      "url": "https://www.bbc.com/news/articles/c77yx53015no?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-09T07:59:33.302211+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }
