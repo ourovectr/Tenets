@@ -1539,5 +1539,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-09T16:21:18.728128+00:00"
+  },
+  "1078373508702862_122108318199339459": {
+    "id": "1078373508702862_122108318199339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Trump says Iran shot down US helicopter and vows to respond",
+      "url": "https://www.bbc.com/news/articles/cze9359gglyo?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Trump says Iran shot down US helicopter and vows to respond\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-09T18:26:18.245971+00:00"
   }
 }
