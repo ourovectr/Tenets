@@ -865,6 +865,14 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122105054595349768",
+      "type": "news",
+      "source": "live_discovery",
+      "title": "Back to back champion. 4-time MVP. Shohei Ohtani is larger than life. 歴史に残る2連覇。4",
+      "url": "https://www.facebook.com/reel/1492316715148745/",
+      "created_at": "2026-06-09T06:59:16.955315+00:00"
     }
   ]
 }
