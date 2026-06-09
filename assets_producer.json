@@ -885,6 +885,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122105733129349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“They keep tagging the band and they don’t even say it’s not a real band”: Angine De Poitrine have acquired some Russian dopelgangers",
+      "url": "https://www.musicradar.com/artists/bands/they-keep-tagging-the-band-and-they-dont-even-say-its-not-a-real-band-angine-de-poitrine-have-acquired-some-russian-dopelgangers",
+      "created_at": "2026-06-09T15:25:54.213697+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
