@@ -1691,5 +1691,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-10T05:51:34.393874+00:00"
+  },
+  "1078373508702862_122108515161339459": {
+    "id": "1078373508702862_122108515161339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Model who alleges Kanye West choked her tells BBC she felt 'suffocated and scared'",
+      "url": "https://www.bbc.com/news/articles/c0q2jgkwk0no?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Model who alleges Kanye West choked her tells BBC she felt 'suffocated and scared'\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-10T08:15:32.345460+00:00"
   }
 }
