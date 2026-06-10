@@ -909,6 +909,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122106114081349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“I was so happy for her… nailing all of the big Neil moments with a giant smile on her face the whole time! She really is the perfect choice for this!”: Mike Portnoy is effusive in his praise of Anika Nilles’ performance at Rush comeback gig",
+      "url": "https://www.musicradar.com/artists/drummers/i-was-so-happy-for-her-nailing-all-of-the-big-neil-moments-with-a-giant-smile-on-her-face-the-whole-time-she-really-is-the-perfect-choice-for-this-mike-portnoy-is-effusive-in-his-praise-of-anika-nilles-performance-at-rush-comeback-gig",
+      "created_at": "2026-06-10T06:49:55.696913+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
