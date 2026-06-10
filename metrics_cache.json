@@ -1918,5 +1918,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-10T11:28:42.904519+00:00"
+  },
+  "1078373508702862_122108587041339459": {
+    "id": "1078373508702862_122108587041339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Trump and Iran trade new threats after strikes exchanged",
+      "url": "https://www.bbc.com/news/articles/ce371kw2ex2o?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Trump and Iran trade new threats after strikes exchanged\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-10T13:58:49.314186+00:00"
   }
 }
