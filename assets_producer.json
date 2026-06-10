@@ -933,6 +933,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122106475707349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "Is Synplant 2's new prompt-based patch generator the future of synthesis?",
+      "url": "https://www.musicradar.com/music-tech/is-synplant-2s-new-prompt-based-patch-generator-the-future-of-synthesis",
+      "created_at": "2026-06-10T16:05:42.012183+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
