@@ -921,6 +921,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122106286689349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“We never wanted David to write the score. It would have been a cliché”: Why Ryuichi Sakamoto’s spellbinding theme from Merry Christmas, Mr. Lawrence remains so captivating",
+      "url": "https://www.musicradar.com/artists/we-never-wanted-david-to-write-the-score-it-would-have-been-a-cliche-why-ryuichi-sakamotos-spellbinding-theme-from-merry-christmas-mr-lawrence-remains-so-captivating",
+      "created_at": "2026-06-10T10:39:43.183551+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
