@@ -643,6 +643,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1021100590422003",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "This gets me every time 💀",
+      "url": "https://x.com//status/2064661498115342536",
+      "created_at": "2026-06-10T21:48:43.085007+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064824321667678209.mp4",
+        "caption": "This gets me every time 💀\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "903528809426481",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Core memory... He’ll never forget this moment.",
+      "url": "https://x.com//status/2064748766503092455",
+      "created_at": "2026-06-10T21:49:57.254961+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064822060824535192.mp4",
+        "caption": "Core memory... He’ll never forget this moment.\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
