@@ -1547,5 +1547,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-10T16:05:42.014079+00:00"
+  },
+  "1091929144010861_122106643779349768": {
+    "id": "1091929144010861_122106643779349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“A natural fit for industrial, techno, noise and experimental electronic music”: Erica Synths Xenodrive review",
+      "url": "https://www.musicradar.com/music-tech/erica-synths-xenodrive-review",
+      "source": "news_engine",
+      "caption": "“A natural fit for industrial, techno, noise and experimental electronic music”: Erica Synths Xenodrive review\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-10T21:18:01.261870+00:00"
   }
 }
