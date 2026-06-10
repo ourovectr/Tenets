@@ -1880,5 +1880,43 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-10T08:33:50.150526+00:00"
+  },
+  "971280275745194": {
+    "id": "971280275745194",
+    "kind": "reel",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Proof that greatness doesn’t need arrogance",
+      "url": "https://x.com//status/2064365034780696677",
+      "source": "pipeline",
+      "caption": "Proof that greatness doesn’t need arrogance\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-10T11:27:30.335542+00:00"
+  },
+  "1476904520323793": {
+    "id": "1476904520323793",
+    "kind": "reel",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "If I won the lottery, I wouldn’t tell anyone, but there would be signs.",
+      "url": "https://x.com//status/2064351155291910226",
+      "source": "pipeline",
+      "caption": "If I won the lottery, I wouldn’t tell anyone, but there would be signs.\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-10T11:28:42.904519+00:00"
   }
 }
