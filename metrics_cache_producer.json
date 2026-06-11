@@ -1623,5 +1623,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-11T16:19:36.660638+00:00"
+  },
+  "1091929144010861_122107418451349768": {
+    "id": "1091929144010861_122107418451349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“Sounds you'll never have heard from a guitar before”: Strandberg x Jamstik Chameleon review",
+      "url": "https://www.musicradar.com/guitars/electric-guitars/strandberg-jamstik-chameleon",
+      "source": "news_engine",
+      "caption": "“Sounds you'll never have heard from a guitar before”: Strandberg x Jamstik Chameleon review\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-11T21:09:48.794243+00:00"
   }
 }
