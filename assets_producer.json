@@ -981,6 +981,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122107264437349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“Playing music should always be fun. It should feel like an escape”: Ed Sheeran teams up with Orange to create the “ultimate busking amp” and launches grassroots music campaign to encourage young players to get out and play",
+      "url": "https://www.musicradar.com/artists/orange-amps-ed-sheeran-team-up-for-outlowd-es-signature-amp-series-and-launch-play-it-home-grassroots-music-campaign",
+      "created_at": "2026-06-11T16:19:36.658597+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }

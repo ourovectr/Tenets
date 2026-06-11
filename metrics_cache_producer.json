@@ -1604,5 +1604,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-11T11:07:36.957675+00:00"
+  },
+  "1091929144010861_122107264437349768": {
+    "id": "1091929144010861_122107264437349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“Playing music should always be fun. It should feel like an escape”: Ed Sheeran teams up with Orange to create the “ultimate busking amp” and launches grassroots music campaign to encourage young players to get out and play",
+      "url": "https://www.musicradar.com/artists/orange-amps-ed-sheeran-team-up-for-outlowd-es-signature-amp-series-and-launch-play-it-home-grassroots-music-campaign",
+      "source": "news_engine",
+      "caption": "“Playing music should always be fun. It should feel like an escape”: Ed Sheeran teams up with Orange to create the “ultimate busking amp” and launches grassroots music campaign to encourage young players to get out and play\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-11T16:19:36.660638+00:00"
   }
 }
