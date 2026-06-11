@@ -755,6 +755,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "882161097551367",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Last time the World Cup really felt like the World Cup",
+      "url": "https://x.com//status/2064807739625226583",
+      "created_at": "2026-06-11T17:08:17.496072+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2065082123300524249.mp4",
+        "caption": "Last time the World Cup really felt like the World Cup\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "1484576132874259",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Aura farming before it was a thing",
+      "url": "https://x.com//status/2065040575968039056",
+      "created_at": "2026-06-11T17:10:06.525571+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2065057527801196707.mp4",
+        "caption": "Aura farming before it was a thing\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
