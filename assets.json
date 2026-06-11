@@ -671,6 +671,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1669357300935542",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "If someone tells you money don't buy happiness, show them this video.",
+      "url": "https://x.com//status/2064739523158794293",
+      "created_at": "2026-06-11T00:24:28.459432+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064821993908637983.mp4",
+        "caption": "If someone tells you money don't buy happiness, show them this video.\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "1262613445746447",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Smartest woman I’ve ever seen",
+      "url": "https://x.com//status/2064824321667678209",
+      "created_at": "2026-06-11T00:25:52.231853+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2064821164501868795.mp4",
+        "caption": "Smartest woman I’ve ever seen\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
