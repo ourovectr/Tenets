@@ -1566,5 +1566,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-10T21:18:01.261870+00:00"
+  },
+  "1091929144010861_122106890913349768": {
+    "id": "1091929144010861_122106890913349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "\"The addition of NAM profile compatibility pushes it well beyond your average multi-effects pedal\": Nux MG-50Li review",
+      "url": "https://www.musicradar.com/guitars/guitar-pedals/nux-mg-50li-review",
+      "source": "news_engine",
+      "caption": "\"The addition of NAM profile compatibility pushes it well beyond your average multi-effects pedal\": Nux MG-50Li review\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-11T07:16:18.211755+00:00"
   }
 }
