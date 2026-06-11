@@ -2371,5 +2371,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-11T12:02:05.123490+00:00"
+  },
+  "1078373508702862_122108926407339459": {
+    "id": "1078373508702862_122108926407339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "El Niño under way and threatens weather extremes, scientists say",
+      "url": "https://www.bbc.com/news/articles/c75ylx7g00xo?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "El Niño under way and threatens weather extremes, scientists say\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-11T14:25:35.354240+00:00"
   }
 }
