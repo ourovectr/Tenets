@@ -727,6 +727,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "875981381578887",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Don’t ask me how many times I’ve watched this",
+      "url": "https://x.com//status/2064821164501868795",
+      "created_at": "2026-06-11T12:00:21.494124+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2065040575968039056.mp4",
+        "caption": "Don’t ask me how many times I’ve watched this\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "2282426082510955",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "Just a man with his ego",
+      "url": "https://x.com//status/2064809826853572810",
+      "created_at": "2026-06-11T12:02:05.120360+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2065008679229804871.mp4",
+        "caption": "Just a man with his ego\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
