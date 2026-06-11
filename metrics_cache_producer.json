@@ -1585,5 +1585,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-11T08:19:09.998464+00:00"
+  },
+  "1091929144010861_122107096881349768": {
+    "id": "1091929144010861_122107096881349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“Say goodbye to unravelling cables, trip hazards on stage, and restricted movement”: The t-bone launch new series of wireless mics",
+      "url": "https://www.musicradar.com/music-tech/microphones/say-goodbye-to-unravelling-cables-trip-hazards-on-stage-and-restricted-movement-the-t-bone-launch-new-series-of-wireless-mics",
+      "source": "news_engine",
+      "caption": "“Say goodbye to unravelling cables, trip hazards on stage, and restricted movement”: The t-bone launch new series of wireless mics\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-11T11:07:36.957675+00:00"
   }
 }

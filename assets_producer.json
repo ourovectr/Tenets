@@ -969,6 +969,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122107096881349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“Say goodbye to unravelling cables, trip hazards on stage, and restricted movement”: The t-bone launch new series of wireless mics",
+      "url": "https://www.musicradar.com/music-tech/microphones/say-goodbye-to-unravelling-cables-trip-hazards-on-stage-and-restricted-movement-the-t-bone-launch-new-series-of-wireless-mics",
+      "created_at": "2026-06-11T11:07:36.955598+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
