@@ -1253,6 +1253,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122108714973339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "Fireworks illuminate Barcelona's Sagrada Família during Pope visit",
+      "url": "https://www.bbc.com/news/videos/ce95gmdlp98o?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-11T00:03:51.241074+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }
