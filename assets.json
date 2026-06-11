@@ -1321,6 +1321,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122108842035339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "US and Iran exchange strikes across Middle East for second day in a row",
+      "url": "https://www.bbc.com/news/articles/c4gyp9v0e93o?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-11T08:53:10.310489+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }

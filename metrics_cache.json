@@ -2127,5 +2127,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-11T06:08:55.343948+00:00"
+  },
+  "1078373508702862_122108842035339459": {
+    "id": "1078373508702862_122108842035339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "US and Iran exchange strikes across Middle East for second day in a row",
+      "url": "https://www.bbc.com/news/articles/c4gyp9v0e93o?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "US and Iran exchange strikes across Middle East for second day in a row\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-11T08:53:10.313079+00:00"
   }
 }
