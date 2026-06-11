@@ -2428,5 +2428,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-11T17:10:06.528725+00:00"
+  },
+  "1078373508702862_122109031557339459": {
+    "id": "1078373508702862_122109031557339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Deadly Sudan drone strike targets funeral procession",
+      "url": "https://www.bbc.com/news/articles/c70yeee2jvqo?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Deadly Sudan drone strike targets funeral procession\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-11T19:16:55.079700+00:00"
   }
 }
