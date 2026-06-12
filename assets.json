@@ -867,6 +867,34 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1474649987310334",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "aura farming and bring it to the next level",
+      "url": "https://x.com//status/2065219460147916814",
+      "created_at": "2026-06-12T11:29:50.909625+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2065341862076952873.mp4",
+        "caption": "aura farming and bring it to the next level\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
+    },
+    {
+      "id": "879994621141140",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "When the driver doesn’t match the car 😂",
+      "url": "https://x.com//status/2065215225318506499",
+      "created_at": "2026-06-12T11:31:08.054848+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2065336824625545338.mp4",
+        "caption": "When the driver doesn’t match the car 😂\n\nStay tuned for more.\n\n#sports #sportsclips #athlete #gamehighlights #winning #competition #viral #trending #reels #explorepage",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
