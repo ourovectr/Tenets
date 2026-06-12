@@ -1005,6 +1005,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122107731087349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“They’re not really football people who are performing anyway, are they?” Noel Gallagher on the artists playing the first World Cup Half Time Show",
+      "url": "https://www.musicradar.com/artists/guitarists/theyre-not-really-football-people-who-are-performing-anyway-are-they-noel-gallagher-on-the-artists-playing-the-first-world-cup-half-time-show",
+      "created_at": "2026-06-12T07:06:10.631702+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
