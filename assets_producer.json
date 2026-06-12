@@ -1029,6 +1029,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122108097291349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "\"A stunningly good reverb pedal that sounds and operates like one twice the price\": Hotone NC-200 Verbera review",
+      "url": "https://www.musicradar.com/guitars/guitar-pedals/hotone-nc-200-verbera-reverb-pedal-review",
+      "created_at": "2026-06-12T15:37:04.402930+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
