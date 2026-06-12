@@ -1017,6 +1017,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122107912089349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“I was sitting there thinking, 'I have no idea how I'm learning that,' but somehow it's working because I learned those songs in a completely different way”: How Anika Nilles prepared for the Rush tour",
+      "url": "https://www.musicradar.com/artists/drummers/i-was-sitting-there-thinking-i-have-no-idea-how-im-learning-that-but-somehow-its-working-because-i-learned-those-songs-in-a-completely-different-way-how-anika-nilles-prepared-for-the-rush-tour",
+      "created_at": "2026-06-12T10:47:16.506214+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
