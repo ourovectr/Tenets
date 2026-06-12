@@ -1745,6 +1745,18 @@
       "title": "Don’t ask me how many times I’ve watched this\n\nStay tuned for more.\n\n#funny #hum",
       "url": "https://www.facebook.com/reel/875981381578887/",
       "created_at": "2026-06-12T08:46:20.539693+00:00"
+    },
+    {
+      "id": "1078373508702862_122109434019339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "Iran says deal to end fighting with US has 'never been closer'",
+      "url": "https://www.bbc.com/news/articles/c39y02x98k8o?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-12T18:21:44.393112+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }
