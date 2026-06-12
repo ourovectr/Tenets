@@ -1597,6 +1597,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122109269829339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "Tehran says 'nothing' finalised after Trump claims deal to end Iran war near",
+      "url": "https://www.bbc.com/news/articles/c78y6w78828o?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-12T08:39:58.587230+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }
