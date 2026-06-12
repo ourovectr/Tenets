@@ -2485,5 +2485,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-11T21:55:06.132384+00:00"
+  },
+  "1078373508702862_122109117957339459": {
+    "id": "1078373508702862_122109117957339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "World Cup kicks off in Mexico with Shakira, dancing, and protests",
+      "url": "https://www.bbc.com/news/articles/c2ly928xz8go?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "World Cup kicks off in Mexico with Shakira, dancing, and protests\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-12T00:08:52.633560+00:00"
   }
 }
