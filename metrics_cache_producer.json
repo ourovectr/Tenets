@@ -1699,5 +1699,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-12T15:37:04.405175+00:00"
+  },
+  "1091929144010861_122108340501349768": {
+    "id": "1091929144010861_122108340501349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“Even though words are supposed to kind of be my thing, I will never be able to express my gratitude to you guys for doing that for me”: Taylor Swift pays tribute to her parents at Songwriters Hall Of Fame ceremony",
+      "url": "https://www.musicradar.com/artists/singers-songwriters/even-though-words-are-supposed-to-kind-of-be-my-thing-i-will-never-be-able-to-express-my-gratitude-to-you-guys-for-doing-that-for-me-taylor-swift-pays-tribute-to-her-parents-at-songwriters-hall-of-fame-ceremony",
+      "source": "news_engine",
+      "caption": "“Even though words are supposed to kind of be my thing, I will never be able to express my gratitude to you guys for doing that for me”: Taylor Swift pays tribute to her parents at Songwriters Hall Of Fame ceremony\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-12T20:57:04.693461+00:00"
   }
 }

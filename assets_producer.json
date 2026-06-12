@@ -1041,6 +1041,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122108340501349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“Even though words are supposed to kind of be my thing, I will never be able to express my gratitude to you guys for doing that for me”: Taylor Swift pays tribute to her parents at Songwriters Hall Of Fame ceremony",
+      "url": "https://www.musicradar.com/artists/singers-songwriters/even-though-words-are-supposed-to-kind-of-be-my-thing-i-will-never-be-able-to-express-my-gratitude-to-you-guys-for-doing-that-for-me-taylor-swift-pays-tribute-to-her-parents-at-songwriters-hall-of-fame-ceremony",
+      "created_at": "2026-06-12T20:57:04.679934+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
