@@ -2021,6 +2021,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122109759477339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "US kills leader of Venezuela's Tren de Aragua gang in airstrike, Trump says",
+      "url": "https://www.bbc.com/news/articles/cp36z37knlko?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-13T17:50:02.932566+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }
