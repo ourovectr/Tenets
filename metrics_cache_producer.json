@@ -1790,5 +1790,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-13T09:42:01.539480+00:00"
+  },
+  "1091929144010861_122108941911349768": {
+    "id": "1091929144010861_122108941911349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“This track is very much John Deacon world. I don’t think I was on it at all to start off with! He was much more into funk than we were. So it’s his rhythm guitar playing – not mine”: Brian May on the No 1 hit that made Queen the biggest band in the world",
+      "url": "https://www.musicradar.com/artists/this-track-is-very-much-john-deacon-world-i-dont-think-i-was-on-it-at-all-to-start-off-with-he-was-much-more-into-funk-than-we-were-so-its-his-rhythm-guitar-playing-not-mine-brian-may-on-the-no-1-hit-that-made-queen-the-biggest-band-in-the-world",
+      "source": "news_engine",
+      "caption": "“This track is very much John Deacon world. I don’t think I was on it at all to start off with! He was much more into funk than we were. So it’s his rhythm guitar playing – not mine”: Brian May on the No 1 hit that made Queen the biggest band in the world\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-13T14:22:54.451458+00:00"
   }
 }
