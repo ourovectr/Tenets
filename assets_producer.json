@@ -1081,6 +1081,18 @@
       "title": "“Even though words are supposed to kind of be my thing, I will never be able to ",
       "url": "https://www.facebook.com/122103174561349768/posts/122108096739349768",
       "created_at": "2026-06-13T07:07:11.340810+00:00"
+    },
+    {
+      "id": "1091929144010861_122108749281349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“The best songwriter we ever had, followed closely by Paul McCartney”: Graham Coxon on his influences and why his new album is coming out 15 years late",
+      "url": "https://www.musicradar.com/artists/guitarists/the-best-songwriter-we-ever-had-followed-closely-by-paul-mccartney-graham-coxon-on-his-influences-and-why-his-new-album-is-coming-out-15-years-late",
+      "created_at": "2026-06-13T09:42:01.537247+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
