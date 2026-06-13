@@ -1105,6 +1105,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122109161487349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“It used to be, like, 25 minutes long!”: How Axl Rose took inspiration from Elton John to create a classic Guns N’ Roses ballad that was years in the making",
+      "url": "https://www.musicradar.com/artists/how-axl-rose-took-inspiration-from-elton-john-to-create-a-classic-guns-n-roses-ballad-that-was-years-in-the-making",
+      "created_at": "2026-06-13T20:08:57.363238+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }

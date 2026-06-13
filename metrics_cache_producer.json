@@ -1809,5 +1809,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-13T14:22:54.451458+00:00"
+  },
+  "1091929144010861_122109161487349768": {
+    "id": "1091929144010861_122109161487349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“It used to be, like, 25 minutes long!”: How Axl Rose took inspiration from Elton John to create a classic Guns N’ Roses ballad that was years in the making",
+      "url": "https://www.musicradar.com/artists/how-axl-rose-took-inspiration-from-elton-john-to-create-a-classic-guns-n-roses-ballad-that-was-years-in-the-making",
+      "source": "news_engine",
+      "caption": "“It used to be, like, 25 minutes long!”: How Axl Rose took inspiration from Elton John to create a classic Guns N’ Roses ballad that was years in the making\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-13T20:08:57.365715+00:00"
   }
 }
