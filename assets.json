@@ -1853,6 +1853,18 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "1078373508702862_122109610101339459",
+      "type": "news",
+      "source": "news_engine",
+      "title": "French town buries murdered child as questions mount over police failings",
+      "url": "https://www.bbc.com/news/articles/cy9rq21dqego?at_medium=RSS&at_campaign=rss",
+      "created_at": "2026-06-13T07:54:59.112433+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ]
 }

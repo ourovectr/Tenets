@@ -2997,5 +2997,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-13T05:49:37.949773+00:00"
+  },
+  "1078373508702862_122109610101339459": {
+    "id": "1078373508702862_122109610101339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "French town buries murdered child as questions mount over police failings",
+      "url": "https://www.bbc.com/news/articles/cy9rq21dqego?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "French town buries murdered child as questions mount over police failings\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-13T07:54:59.115846+00:00"
   }
 }
