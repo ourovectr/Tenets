@@ -3241,5 +3241,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-13T10:18:37.666043+00:00"
+  },
+  "1078373508702862_122109672195339459": {
+    "id": "1078373508702862_122109672195339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Switzerland to vote on plan to cap population at 10 million",
+      "url": "https://www.bbc.com/news/articles/cx23kz7e76po?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Switzerland to vote on plan to cap population at 10 million\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-13T12:12:29.868311+00:00"
   }
 }
