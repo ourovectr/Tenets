@@ -3355,5 +3355,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-13T20:58:21.676427+00:00"
+  },
+  "1078373508702862_122109881415339459": {
+    "id": "1078373508702862_122109881415339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Trump says US-Iran deal to be signed on Sunday as Tehran casts doubt on timing",
+      "url": "https://www.bbc.com/news/articles/cvglmn49xz0o?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Trump says US-Iran deal to be signed on Sunday as Tehran casts doubt on timing\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-13T23:46:21.667139+00:00"
   }
 }
