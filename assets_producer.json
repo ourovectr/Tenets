@@ -1053,6 +1053,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122108634081349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“An immensely powerful tool for recording, live use, rehearsing and practising, teaching, live streaming and more”: Yamaha EAD50 review",
+      "url": "https://www.musicradar.com/drums/drum-gear/yamaha-ead50-review",
+      "created_at": "2026-06-13T06:38:42.968475+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
