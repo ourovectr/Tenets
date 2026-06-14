@@ -3450,5 +3450,24 @@
       "tenant": "viral"
     },
     "cached_at": "2026-06-14T06:07:44.950349+00:00"
+  },
+  "1078373508702862_122110017291339459": {
+    "id": "1078373508702862_122110017291339459",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "Russian families use AI to 'resurrect' loved ones killed in Ukraine",
+      "url": "https://www.bbc.com/news/articles/cwy24v72n19o?at_medium=RSS&at_campaign=rss",
+      "source": "news_engine",
+      "caption": "Russian families use AI to 'resurrect' loved ones killed in Ukraine\n\n#news #concretehorizons #worldnews",
+      "tenant": "viral"
+    },
+    "cached_at": "2026-06-14T08:20:02.427710+00:00"
   }
 }
