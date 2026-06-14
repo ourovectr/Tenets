@@ -1147,6 +1147,20 @@
         "status": "published",
         "tenant": "viral"
       }
+    },
+    {
+      "id": "992218907034166",
+      "type": "reels",
+      "source": "pipeline",
+      "title": "He accepted his fate",
+      "url": "https://x.com//status/2065821429707289017",
+      "created_at": "2026-06-14T10:41:17.080131+00:00",
+      "extra": {
+        "queue_source": "downloaded_videos/_2066098283336831453.mp4",
+        "caption": "He accepted his fate\n\nStay tuned for more.\n\n#funny #humor #fails #viral #trending #reels #explorepage #laugh #watchthis",
+        "status": "published",
+        "tenant": "viral"
+      }
     }
   ],
   "news": [
