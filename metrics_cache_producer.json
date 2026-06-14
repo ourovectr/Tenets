@@ -1864,5 +1864,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-14T08:00:22.756834+00:00"
+  },
+  "1091929144010861_122109606885349768": {
+    "id": "1091929144010861_122109606885349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“I didn't even want it to be on the record, honestly. How wrong could I have possibly been?”: How Linkin Park created their biggest song that has now racked up billions of streams",
+      "url": "https://www.musicradar.com/artists/how-linkin-park-created-their-biggest-song-that-has-now-racked-up-billions-of-streams",
+      "source": "news_engine",
+      "caption": "“I didn't even want it to be on the record, honestly. How wrong could I have possibly been?”: How Linkin Park created their biggest song that has now racked up billions of streams\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-14T10:02:19.946016+00:00"
   }
 }
