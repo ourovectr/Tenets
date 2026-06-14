@@ -1117,6 +1117,18 @@
         "status": "published",
         "tenant": "producer"
       }
+    },
+    {
+      "id": "1091929144010861_122109497067349768",
+      "type": "news",
+      "source": "news_engine",
+      "title": "“All the notes are different, but the feel of it and the rhythm of it gives that track an extra little kick”: Producer Mike Stock on the secret sauce in Rick Astley's biggest song, why Stock Aitken Waterman was never a 'hit factory', and new music",
+      "url": "https://www.musicradar.com/artists/all-the-notes-are-different-but-the-feel-of-it-and-the-rhythm-of-it-gives-that-track-an-extra-little-kick-producer-mike-stock-on-the-secret-sauce-in-rick-astleys-biggest-song-why-stock-aitken-waterman-was-never-a-hit-factory-and-new-music",
+      "created_at": "2026-06-14T07:08:04.104990+00:00",
+      "extra": {
+        "status": "published",
+        "tenant": "producer"
+      }
     }
   ]
 }
