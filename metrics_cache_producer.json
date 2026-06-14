@@ -1883,5 +1883,24 @@
       "tenant": "producer"
     },
     "cached_at": "2026-06-14T10:02:19.946016+00:00"
+  },
+  "1091929144010861_122109784845349768": {
+    "id": "1091929144010861_122109784845349768",
+    "kind": "news",
+    "metrics": {
+      "reactions": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": null,
+      "engagements": 0
+    },
+    "metadata": {
+      "title": "“I was looking for it and he said, ‘Oh that? I threw it away. It was crap.’ I couldn’t believe it”: How Tony Iommi found the secret to his Black Sabbath tone (and how he lost it)",
+      "url": "https://www.musicradar.com/artists/tony-iommi-secret-to-black-sabbath-electric-guitar-tone",
+      "source": "news_engine",
+      "caption": "“I was looking for it and he said, ‘Oh that? I threw it away. It was crap.’ I couldn’t believe it”: How Tony Iommi found the secret to his Black Sabbath tone (and how he lost it)\n\n#musicproducer #beatmaker #producerlife",
+      "tenant": "producer"
+    },
+    "cached_at": "2026-06-14T14:26:18.191270+00:00"
   }
 }
